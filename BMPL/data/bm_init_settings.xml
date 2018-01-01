@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<init>
+  <section name="data_tables">
+    <setting name="error_arj" comment="Справочник ошибок arj.exe" />
+    <setting name="error_scsignex" comment="Справочник ошибок scsignex.exe" />
+    <setting name="service" comment="Данные сервисов" />
+  </section>
+</init> 

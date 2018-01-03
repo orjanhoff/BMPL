@@ -11,7 +11,6 @@ namespace BMPL
 {
     class BMUiGear
     {
-
         //Добавление строки к сетке
         private static int dgvAddRow(DataGridView _dgv)
         {
@@ -47,15 +46,15 @@ namespace BMPL
         }
 
         //Пошаговое заполнение сетки
-        public static void DgvFillData(DataGridView _dgv, DataTable _dtbl, string[] columns)
+        public static void DgvFillData(DataGridView _dgv, DataTable _dtbl, bool addbtn = true, params string[] columns)
         {
             switch (columns.Length > 0)
             {
-                case false: throw new BMUiCustomControls.UIException("{0}: Не указаны наименования колонок в талице с данными");
+                case false: throw new BMUiCustomControls.UIException("{0}: Не указаны наименования колонок в таблице с данными");
                 default: 
                             switch (_dtbl.Rows.Count>0)
                             {
-                                case false: throw new BMUiCustomControls.UIException("{0}: Таблица с данными не содежит строк");
+                                case false: throw new BMUiCustomControls.UIException("{0}: Таблица с данными не содержит строк");
                                 default: break;
                             }
 
@@ -70,7 +69,7 @@ namespace BMPL
                 {
                     _dgv.Rows[num].Cells[i].Value = row[columns[i]];
 
-                    switch (i.Equals(columns.Length-1))
+                    switch (addbtn && i.Equals(columns.Length-1))
                     {
                         case true:
                             _dgv.Rows[num].Cells[columns.Length] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.view, "Просмотр справочника");

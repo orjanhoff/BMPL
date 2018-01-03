@@ -13,29 +13,29 @@ namespace BMPL
 {
     public partial class BM_main : Form
     {
-        BMUiCache.Cache cache;
-
         public BM_main()
         {
             InitializeComponent();
 
             //this.MaximizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
 
             BM_service bm_service = new BM_service();
             bm_service.MdiParent = this;
             bm_service.Show();
 
-            cache = new BMUiCache.Cache(new BMDaGear());
-            cache.BuildCache();
-
-            MessageBox.Show(cache.Count.ToString());
-            //MessageBox.Show(cache["service"].Rows[1][1].ToString());
+            switch (BMUiConst.UiConst.Equals(null))
+            {
+                case true:
+                    BMUiCustomControls.UIException.Alert("{0}: Ошибка при построении кэша", "Ошибка приложения");
+                    break;
+                default: break;
+            }
         }
 
         private void словариToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BM_dictionary b_dictionary = new BM_dictionary(cache["sys_table"]);
+            BM_dictionary b_dictionary = new BM_dictionary(BMUiConst.UiConst.Cache["sys_table"]);
             b_dictionary.ShowDialog();
         }
     }

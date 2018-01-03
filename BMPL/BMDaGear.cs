@@ -5,6 +5,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BMPL
 {
@@ -13,8 +14,8 @@ namespace BMPL
         private SQLiteConnection sql_con;
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter data_adp;
-        private DataSet data_set= new DataSet();
-        private DataTable data_tbl = new DataTable();
+        private DataSet data_set;
+        private DataTable data_tbl;
 
         private string db_path;
 
@@ -53,11 +54,13 @@ namespace BMPL
             SetConnection();
             sql_cmd = sql_con.CreateCommand();
 
-            string query_txt = "select * from "+tbl_name;
+            string query_txt = "select * from " + tbl_name;
             data_adp = new SQLiteDataAdapter(query_txt, sql_con);
 
-            data_set.Reset();
+            data_set = new DataSet();
             data_adp.Fill(data_set);
+
+            data_tbl = new DataTable();
             data_tbl = data_set.Tables[0];
 
             CloseConnection();
@@ -72,8 +75,10 @@ namespace BMPL
             string query_txt = "select * from " + tbl_name + " where "+ where;
             data_adp = new SQLiteDataAdapter(query_txt, sql_con);
 
-            data_set.Reset();
+            data_set = new DataSet();
             data_adp.Fill(data_set);
+
+            data_tbl = new DataTable();
             data_tbl = data_set.Tables[0];
 
             CloseConnection();

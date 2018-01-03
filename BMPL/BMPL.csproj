@@ -81,6 +81,12 @@
     <Compile Include="BM_dictionary.Designer.cs">
       <DependentUpon>BM_dictionary.cs</DependentUpon>
     </Compile>
+    <Compile Include="BM_dictionary_data.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BM_dictionary_data.Designer.cs">
+      <DependentUpon>BM_dictionary_data.cs</DependentUpon>
+    </Compile>
     <Compile Include="BM_main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BM_dictionary.resx">
       <DependentUpon>BM_dictionary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BM_dictionary_data.resx">
+      <DependentUpon>BM_dictionary_data.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BM_main.resx">
       <DependentUpon>BM_main.cs</DependentUpon>

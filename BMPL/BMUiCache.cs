@@ -2,6 +2,7 @@
 using System.Data;
 using System.Xml;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace BMPL
 {
@@ -31,7 +32,6 @@ namespace BMPL
                 return this;
             }
         }
-
 
         //Кэш бизнес-сущностей
         public class Cache:SortedList<string,DataTable>

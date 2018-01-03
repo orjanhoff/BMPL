@@ -4,6 +4,9 @@ namespace BMPL
 {
     class BMUiConst
     {
+        private static BMUiConst uiConst;
+        private static BMUiCache.Cache cache;
+
         public static string bm_app_path= Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         public static string bm_path_sep= Path.DirectorySeparatorChar.ToString();
 
@@ -18,5 +21,24 @@ namespace BMPL
 
         public static string bm_path_db = Path.Combine(bm_app_path, bm_folder_data, bm_name_db);
         public static string bm_path_xml = Path.Combine(bm_app_path, bm_folder_data, bm_name_xml);
+
+        public static BMUiConst UiConst
+        {
+            get { return uiConst ?? (uiConst = new BMUiConst()); }
+        }
+
+        private BMUiConst()
+        {
+            cache = new BMUiCache.Cache(new BMDaGear());
+            cache.BuildCache();
+        }
+
+        public BMUiCache.Cache Cache
+        {
+            get
+            {
+                return cache;
+            }
+        }
     }
 }

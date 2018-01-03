@@ -13,6 +13,8 @@ namespace BMPL
 {
     public partial class BM_main : Form
     {
+        BMUiCache.Cache cache;
+
         public BM_main()
         {
             InitializeComponent();
@@ -24,16 +26,16 @@ namespace BMPL
             bm_service.MdiParent = this;
             bm_service.Show();
 
-            BMUiCache.Cache cache = new BMUiCache.Cache(new BMDaGear());
+            cache = new BMUiCache.Cache(new BMDaGear());
             cache.BuildCache();
 
             MessageBox.Show(cache.Count.ToString());
-            MessageBox.Show(cache["service"].Rows[0][1].ToString());
+            //MessageBox.Show(cache["service"].Rows[1][1].ToString());
         }
 
         private void словариToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BM_dictionary b_dictionary = new BM_dictionary();
+            BM_dictionary b_dictionary = new BM_dictionary(cache["sys_table"]);
             b_dictionary.ShowDialog();
         }
     }

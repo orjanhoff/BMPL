@@ -183,6 +183,7 @@
             // 
             // оПрограммеToolStripMenuItem
             // 
+            this.оПрограммеToolStripMenuItem.Image = global::BMPL.Properties.Resources.view;
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
             this.оПрограммеToolStripMenuItem.Text = "О программе";

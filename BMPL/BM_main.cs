@@ -38,5 +38,11 @@ namespace BMPL
             BM_dictionary b_dictionary = new BM_dictionary(BMUiConst.UiConst.Cache["sys_table"]);
             b_dictionary.ShowDialog();
         }
+
+        private void пользователиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BM_user b_user = new BM_user(BMUiConst.UiConst.Cache["user"]);
+            b_user.ShowDialog();
+        }
     }
 }

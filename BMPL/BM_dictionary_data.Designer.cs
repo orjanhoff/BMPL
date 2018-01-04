@@ -68,6 +68,8 @@
             this.dgv1.AllowUserToDeleteRows = false;
             this.dgv1.AllowUserToResizeColumns = false;
             this.dgv1.AllowUserToResizeRows = false;
+            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv1.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -77,6 +79,7 @@
             this.dgv1.Name = "dgv1";
             this.dgv1.ReadOnly = true;
             this.dgv1.RowHeadersVisible = false;
+            this.dgv1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv1.RowTemplate.Height = 24;
             this.dgv1.Size = new System.Drawing.Size(622, 391);
             this.dgv1.TabIndex = 2;
@@ -97,15 +100,16 @@
             // 
             // c1
             // 
+            this.c1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.c1.DefaultCellStyle = dataGridViewCellStyle2;
             this.c1.HeaderText = "Описание";
             this.c1.Name = "c1";
             this.c1.ReadOnly = true;
-            this.c1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.c1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.c1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.c1.ToolTipText = "Описание параметра";
-            this.c1.Width = 400;
+            this.c1.Width = 5;
             // 
             // BM_dictionary_data
             // 
@@ -115,7 +119,6 @@
             this.ClientSize = new System.Drawing.Size(646, 451);
             this.Controls.Add(this.dgv1);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BM_dictionary_data";
             this.Text = "BM_dictionary_data";

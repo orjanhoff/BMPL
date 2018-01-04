@@ -18,17 +18,13 @@ namespace BMPL
 
             MaximizeBox = false;
             MinimizeBox = false;
-
-            dgv1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv1.EnableHeadersVisualStyles = false;
-            dgv1.ShowCellToolTips = true;
-            dgv1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgv1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            DataTable copyDataTable=null;
-            copyDataTable = (from DataRow row in data.Rows where row.Field<Int64>(2).Equals(1) select row).CopyToDataTable();
+            StartPosition = FormStartPosition.CenterParent;
 
             BMUiGear.DgvAlignCenter(dgv1);
+            BMUiGear.DgvConfigureDictionary(dgv1);
+
+            DataTable copyDataTable = (from DataRow row in data.Rows where row.Field<Int64>(2).Equals(1) select row).CopyToDataTable();
+
             try
             {
                 BMUiGear.DgvFillData(dgv1, copyDataTable, true, "stblname", "stbldesc");
@@ -43,12 +39,13 @@ namespace BMPL
         {
             var senderGrid = (DataGridView)sender;
             string table = dgv1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string description = dgv1.Rows[e.RowIndex].Cells[1].Value.ToString();
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
               if (e.ColumnIndex == senderGrid.ColumnCount-1)
                 {
-                    BM_dictionary_data b_dictionary_data = new BM_dictionary_data(table);
+                    BM_dictionary_data b_dictionary_data = new BM_dictionary_data(table, description);
                     b_dictionary_data.ShowDialog();
                 }
             }
@@ -57,6 +54,8 @@ namespace BMPL
         private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BMUiCustomControls.UIException.Warn("ToDo", "Внимание");
+            /*BM_control b_control = new BM_control();
+            b_control.ShowDialog(this);*/
         }
     }
 }

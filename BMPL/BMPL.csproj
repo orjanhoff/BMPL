@@ -75,6 +75,12 @@
     <Compile Include="BMUiCustomControls.cs" />
     <Compile Include="BMUiDictionary.cs" />
     <Compile Include="BMUiGear.cs" />
+    <Compile Include="BM_control.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BM_control.Designer.cs">
+      <DependentUpon>BM_control.cs</DependentUpon>
+    </Compile>
     <Compile Include="BM_dictionary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,8 +105,17 @@
     <Compile Include="BM_service.Designer.cs">
       <DependentUpon>BM_service.cs</DependentUpon>
     </Compile>
+    <Compile Include="BM_user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BM_user.Designer.cs">
+      <DependentUpon>BM_user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BM_control.resx">
+      <DependentUpon>BM_control.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BM_dictionary.resx">
       <DependentUpon>BM_dictionary.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BM_service.resx">
       <DependentUpon>BM_service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BM_user.resx">
+      <DependentUpon>BM_user.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -182,6 +200,13 @@
     <Content Include="data\bm_init_settings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\operator.png" />
+    <None Include="Resources\auditor.png" />
+    <None Include="Resources\admin.png" />
+    <None Include="Resources\unlock.png" />
+    <None Include="Resources\lock.png" />
+    <None Include="Resources\minus.png" />
+    <None Include="Resources\plus.png" />
     <None Include="Resources\view.png" />
     <None Include="Resources\gear.png" />
   </ItemGroup>

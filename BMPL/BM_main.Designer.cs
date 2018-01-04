@@ -40,7 +40,7 @@
             this.обновлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.словариToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.шаблоныСообщенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.обновитьСправочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.реестрAPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,7 +127,7 @@
             this.обновлениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.словариToolStripMenuItem,
             this.шаблоныСообщенийToolStripMenuItem,
-            this.обновитьСправочникиToolStripMenuItem,
+            this.пользователяToolStripMenuItem,
             this.реестрAPIToolStripMenuItem,
             this.отчетыToolStripMenuItem});
             this.обновлениеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("обновлениеToolStripMenuItem.Image")));
@@ -150,12 +150,13 @@
             this.шаблоныСообщенийToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.шаблоныСообщенийToolStripMenuItem.Text = "Сообщения";
             // 
-            // обновитьСправочникиToolStripMenuItem
+            // пользователяToolStripMenuItem
             // 
-            this.обновитьСправочникиToolStripMenuItem.Image = global::BMPL.Properties.Resources.users;
-            this.обновитьСправочникиToolStripMenuItem.Name = "обновитьСправочникиToolStripMenuItem";
-            this.обновитьСправочникиToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
-            this.обновитьСправочникиToolStripMenuItem.Text = "Пользователи";
+            this.пользователяToolStripMenuItem.Image = global::BMPL.Properties.Resources.users;
+            this.пользователяToolStripMenuItem.Name = "пользователяToolStripMenuItem";
+            this.пользователяToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.пользователяToolStripMenuItem.Text = "Пользователи";
+            this.пользователяToolStripMenuItem.Click += new System.EventHandler(this.пользователиToolStripMenuItem_Click);
             // 
             // реестрAPIToolStripMenuItem
             // 
@@ -183,13 +184,14 @@
             // 
             // оПрограммеToolStripMenuItem
             // 
-            this.оПрограммеToolStripMenuItem.Image = global::BMPL.Properties.Resources.view;
+            this.оПрограммеToolStripMenuItem.Image = global::BMPL.Properties.Resources._operator;
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // руководствоПользователяToolStripMenuItem
             // 
+            this.руководствоПользователяToolStripMenuItem.Image = global::BMPL.Properties.Resources.unlock;
             this.руководствоПользователяToolStripMenuItem.Name = "руководствоПользователяToolStripMenuItem";
             this.руководствоПользователяToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
             this.руководствоПользователяToolStripMenuItem.Text = "Руководство пользователя";
@@ -227,7 +229,7 @@
         private System.Windows.Forms.ToolStripMenuItem обновлениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem словариToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem шаблоныСообщенийToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem обновитьСправочникиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пользователяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem руководствоПользователяToolStripMenuItem;

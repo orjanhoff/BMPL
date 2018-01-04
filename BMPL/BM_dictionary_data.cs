@@ -12,25 +12,28 @@ namespace BMPL
 {
     public partial class BM_dictionary_data : Form
     {
-        public BM_dictionary_data(string table)
+        public BM_dictionary_data(params string[] data)
         {
             InitializeComponent();
 
             MaximizeBox = false;
             MinimizeBox = false;
+            StartPosition = FormStartPosition.CenterParent;
 
-            Text = table;
+            switch (data.Length)
+            {
+                case 2: Text = data[1] ?? data[0]; break;
+                case 1: Text = data[0]; break;
+                case 0: BMUiCustomControls.UIException.Alert("{0}: Не задан справочник", "Ошибка приложения");
+                    return;
+            }
+            
+            BMUiGear.DgvAlignCenterAndLeft(dgv1);
+            BMUiGear.DgvConfigureDictionary(dgv1);
 
-            dgv1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv1.EnableHeadersVisualStyles = false;
-            dgv1.ShowCellToolTips = true;
-            dgv1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgv1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            BMUiGear.DgvAlignCenter(dgv1);
             try
             {
-                BMUiGear.DgvFillData(dgv1, BMUiConst.UiConst.Cache[table], false, "ierrcode", "serrmsg");
+                BMUiGear.DgvFillData(dgv1, BMUiConst.UiConst.Cache[data[0]], false, "ierrcode", "serrmsg");
             }
             catch (Exception ex)
             {

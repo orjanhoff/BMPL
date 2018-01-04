@@ -18,7 +18,6 @@ namespace BMPL
         private DataTable data_tbl;
 
         private string db_path;
-
         private string db_url;
 
         public BMDaGear (string db_path)

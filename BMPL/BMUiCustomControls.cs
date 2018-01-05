@@ -9,6 +9,7 @@ namespace BMPL
         public class DataGridViewImageButtonCell : DataGridViewButtonCell
         {
             Image icon;
+            object value;
 
             public DataGridViewImageButtonCell(Image img)
             {
@@ -19,6 +20,18 @@ namespace BMPL
             {
                 icon = img;
                 base.ToolTipText = tooltiptext;
+            }
+
+            public DataGridViewImageButtonCell(object val, Image img, string tooltiptext)
+            {
+                value = val;
+                icon = img;
+                base.ToolTipText = tooltiptext;
+            }
+
+            public object Value
+            {
+                get { return this.value; }
             }
 
             protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates elementState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)

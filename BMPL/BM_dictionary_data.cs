@@ -20,6 +20,8 @@ namespace BMPL
             MinimizeBox = false;
             StartPosition = FormStartPosition.CenterParent;
 
+            propertiesToolStripMenuItem.MouseDown += new MouseEventHandler(propertiesToolStripMenuItem_MouseDown);
+
             switch (data.Length)
             {
                 case 2: Text = data[1] ?? data[0]; break;
@@ -46,9 +48,17 @@ namespace BMPL
 
         }
 
-        private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void propertiesToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
         {
-
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    {
+                        ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
+                        cms1.Show(this, new Point(tsmi.Bounds.Location.X + tsmi.Width, tsmi.Bounds.Location.Y + tsmi.Height));
+                    }
+                    break;
+            }
         }
     }
 }

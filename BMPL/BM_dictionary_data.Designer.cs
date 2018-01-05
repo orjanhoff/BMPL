@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BM_dictionary_data));
@@ -36,8 +37,12 @@
             this.dgv1 = new System.Windows.Forms.DataGridView();
             this.с0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cms1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmi1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
+            this.cms1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -60,7 +65,6 @@
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
             this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(32, 24);
             this.propertiesToolStripMenuItem.ToolTipText = "Конфигурация";
-            this.propertiesToolStripMenuItem.Click += new System.EventHandler(this.propertiesToolStripMenuItem_Click);
             // 
             // dgv1
             // 
@@ -111,6 +115,30 @@
             this.c1.ToolTipText = "Описание параметра";
             this.c1.Width = 5;
             // 
+            // cms1
+            // 
+            this.cms1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cms1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cms1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi1,
+            this.tsmi2});
+            this.cms1.Name = "cms1";
+            this.cms1.Size = new System.Drawing.Size(182, 84);
+            // 
+            // tsmi1
+            // 
+            this.tsmi1.Image = global::BMPL.Properties.Resources.minus;
+            this.tsmi1.Name = "tsmi1";
+            this.tsmi1.Size = new System.Drawing.Size(181, 26);
+            this.tsmi1.Text = "Удалить";
+            // 
+            // tsmi2
+            // 
+            this.tsmi2.Image = global::BMPL.Properties.Resources.plus;
+            this.tsmi2.Name = "tsmi2";
+            this.tsmi2.Size = new System.Drawing.Size(181, 26);
+            this.tsmi2.Text = "Добавить";
+            // 
             // BM_dictionary_data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -125,6 +153,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
+            this.cms1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,5 +166,8 @@
         private System.Windows.Forms.DataGridView dgv1;
         private System.Windows.Forms.DataGridViewTextBoxColumn с0;
         private System.Windows.Forms.DataGridViewTextBoxColumn c1;
+        private System.Windows.Forms.ContextMenuStrip cms1;
+        private System.Windows.Forms.ToolStripMenuItem tsmi1;
+        private System.Windows.Forms.ToolStripMenuItem tsmi2;
     }
 }

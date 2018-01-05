@@ -20,6 +20,8 @@ namespace BMPL
             MinimizeBox = false;
             StartPosition = FormStartPosition.CenterParent;
 
+            propertiesToolStripMenuItem.MouseDown += new MouseEventHandler(propertiesToolStripMenuItem_MouseDown);
+
             BMUiGear.DgvAlignCenter(dgv1);
             BMUiGear.DgvConfigureDictionary(dgv1);
 
@@ -51,11 +53,17 @@ namespace BMPL
             }
         }
 
-        private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void propertiesToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
         {
-            BMUiCustomControls.UIException.Warn("ToDo", "Внимание");
-            /*BM_control b_control = new BM_control();
-            b_control.ShowDialog(this);*/
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    {
+                        ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
+                        cms1.Show(this, new Point(tsmi.Bounds.Location.X + tsmi.Width, tsmi.Bounds.Location.Y + tsmi.Height));
+                    }
+                    break;
+            }
         }
     }
 }

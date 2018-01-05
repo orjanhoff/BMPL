@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -155,10 +156,10 @@ namespace BMPL
                             switch (Int64.Parse(row[columns[i]].ToString()).Equals(0))
                             {
                                 case true:
-                                    _dgv.Rows[num].Cells[i] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources._lock, "Статус пользователя в системе");
+                                    _dgv.Rows[num].Cells[i] = new BMUiCustomControls.DataGridViewImageButtonCell(row[columns[i]], Resources._lock, "Статус пользователя в системе");
                                     break;
                                 default:
-                                    _dgv.Rows[num].Cells[i] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.unlock, "Статус пользователя в системе");
+                                    _dgv.Rows[num].Cells[i] = new BMUiCustomControls.DataGridViewImageButtonCell(row[columns[i]], Resources.unlock, "Статус пользователя в системе");
                                     break;
                             }
 

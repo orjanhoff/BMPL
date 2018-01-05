@@ -28,19 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BM_user));
             this.dgv1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.co = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.с1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.с3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.c4 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmi1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.cms1.SuspendLayout();
+            this.cms2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv1
@@ -79,13 +88,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(847, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // propertiesToolStripMenuItem
-            // 
-            this.propertiesToolStripMenuItem.Image = global::BMPL.Properties.Resources.gear;
-            this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
-            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(32, 24);
-            this.propertiesToolStripMenuItem.ToolTipText = "Конфигурация";
             // 
             // co
             // 
@@ -138,6 +140,61 @@
             this.c4.ToolTipText = "Роль пользователя";
             this.c4.Width = 25;
             // 
+            // propertiesToolStripMenuItem
+            // 
+            this.propertiesToolStripMenuItem.Image = global::BMPL.Properties.Resources.gear;
+            this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
+            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(32, 24);
+            this.propertiesToolStripMenuItem.ToolTipText = "Конфигурация";
+            // 
+            // cms1
+            // 
+            this.cms1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cms1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cms1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi1,
+            this.tsmi2});
+            this.cms1.Name = "cms1";
+            this.cms1.Size = new System.Drawing.Size(152, 56);
+            // 
+            // tsmi1
+            // 
+            this.tsmi1.Image = global::BMPL.Properties.Resources.minus;
+            this.tsmi1.Name = "tsmi1";
+            this.tsmi1.Size = new System.Drawing.Size(151, 26);
+            this.tsmi1.Text = "Удалить";
+            // 
+            // tsmi2
+            // 
+            this.tsmi2.Image = global::BMPL.Properties.Resources.plus;
+            this.tsmi2.Name = "tsmi2";
+            this.tsmi2.Size = new System.Drawing.Size(151, 26);
+            this.tsmi2.Text = "Добавить";
+            // 
+            // cms2
+            // 
+            this.cms2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cms2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cms2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
+            this.cms2.Name = "cms1";
+            this.cms2.Size = new System.Drawing.Size(198, 84);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = global::BMPL.Properties.Resources._lock;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(197, 26);
+            this.toolStripMenuItem1.Text = "Заблокировать";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Image = global::BMPL.Properties.Resources.unlock;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(197, 26);
+            this.toolStripMenuItem2.Text = "Разблокировать";
+            // 
             // BM_user
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -153,6 +210,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.cms1.ResumeLayout(false);
+            this.cms2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +227,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn c2;
         private System.Windows.Forms.DataGridViewButtonColumn с3;
         private System.Windows.Forms.DataGridViewButtonColumn c4;
+        private System.Windows.Forms.ContextMenuStrip cms1;
+        private System.Windows.Forms.ToolStripMenuItem tsmi1;
+        private System.Windows.Forms.ToolStripMenuItem tsmi2;
+        private System.Windows.Forms.ContextMenuStrip cms2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }

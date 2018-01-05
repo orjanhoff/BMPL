@@ -101,13 +101,6 @@ namespace BMPL
                     break;
             }
 
-            /*switch (columns[0].GetType() != typeof(string))
-            {
-                case true:  _dtbl.DefaultView.Sort = Int64.Parse(columns[0]) + " asc";
-                            _dtbl = _dtbl.DefaultView.ToTable();
-                            break;
-            }*/
-
             foreach (DataRow row in _dtbl.Rows)
             {
                 int num = dgvAddRow(_dgv);
@@ -173,13 +166,13 @@ namespace BMPL
                             switch (Int64.Parse(row[columns[i]].ToString()))
                             {
                                 case 1:
-                                    _dgv.Rows[num].Cells[i] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources._operator, "Роль пользователя в системе");
+                                    _dgv.Rows[num].Cells[i] = new BMUiCustomControls.DataGridViewImageButtonCell(row[columns[i]], Resources._operator, "Роль пользователя в системе");
                                     break;
                                 case 2:
-                                    _dgv.Rows[num].Cells[i] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.auditor, "Роль пользователя в системе");
+                                    _dgv.Rows[num].Cells[i] = new BMUiCustomControls.DataGridViewImageButtonCell(row[columns[i]], Resources.auditor, "Роль пользователя в системе");
                                     break;
                                 case 3:
-                                    _dgv.Rows[num].Cells[i] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.admin, "Роль пользователя в системе");
+                                    _dgv.Rows[num].Cells[i] = new BMUiCustomControls.DataGridViewImageButtonCell(row[columns[i]], Resources.admin, "Роль пользователя в системе");
                                     break;
                             }
 
@@ -188,6 +181,39 @@ namespace BMPL
                     }
                 }
             }
+        }
+
+        //Добавление лидирующих пробелов к строке
+        private static string AddLeadSpace (string mystring)
+        {
+            return " " + mystring;
+        }
+
+        //Установка статуса пользователя
+        public static void changeUserStatus(DataGridView dgv, int status)
+        {
+            Image icon = Resources._lock;
+
+            switch (status)
+            {
+                case 1: icon = Resources.unlock; break;
+            }
+
+            new BMDaGear().ExecuteQuery(
+                                     "update user set iuserstatus=" +
+                                     status                         +
+                                     AddLeadSpace("where iuserid=") +
+                                     dgv.SelectedCells[0].Value.ToString()
+                                     );
+
+            DataRow row = BMUiConst.UiConst.Cache["user"]
+                                                            .Select("iuserid=" + dgv.SelectedCells[0]
+                                                            .Value
+                                                            .ToString())
+                                                            .First();
+            row["iuserstatus"] = status;
+
+            dgv.Rows[dgv.SelectedCells[0].RowIndex].Cells[3] = new BMUiCustomControls.DataGridViewImageButtonCell(status, icon, "Статус пользователя в системе");
         }
     }
 }

@@ -48,30 +48,27 @@ namespace BMPL
             return sql_con.State.ToString();
         }
 
-        public DataTable SelectData(string tbl_name)
+        public void ExecuteQuery(string txtQuery)
         {
             SetConnection();
             sql_cmd = sql_con.CreateCommand();
-
-            string query_txt = "select * from " + tbl_name;
-            data_adp = new SQLiteDataAdapter(query_txt, sql_con);
-
-            data_set = new DataSet();
-            data_adp.Fill(data_set);
-
-            data_tbl = new DataTable();
-            data_tbl = data_set.Tables[0];
-
-            CloseConnection();
-            return data_tbl;
+            sql_cmd.CommandText = txtQuery;
+            sql_cmd.ExecuteNonQuery();
+            sql_con.Close();
         }
 
-        public DataTable SelectData(string tbl_name, string where)
+        public DataTable SelectData(string tbl_name, string where=null)
         {
+            string query_txt = "select * from " + tbl_name;
+
             SetConnection();
             sql_cmd = sql_con.CreateCommand();
 
-            string query_txt = "select * from " + tbl_name + " where "+ where;
+            switch(string.IsNullOrEmpty(where))
+            {
+                case false: query_txt = "select * from " + tbl_name + " where " + where; break;
+            }
+
             data_adp = new SQLiteDataAdapter(query_txt, sql_con);
 
             data_set = new DataSet();

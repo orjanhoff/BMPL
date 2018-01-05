@@ -13,6 +13,8 @@ namespace BMPL
 {
     public partial class BM_user : Form
     {
+        BMDaGear bm_da_gear = new BMDaGear();
+
         public BM_user(DataTable data)
         {
             InitializeComponent();
@@ -57,6 +59,22 @@ namespace BMPL
 
                     cms2.Show(this, new Point(r, y+2*h));
                 }
+
+                else if (e.ColumnIndex == senderGrid.ColumnCount - 1)
+                {
+                    int r = senderGrid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Right;
+                    int y = senderGrid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location.Y;
+                    int h = senderGrid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Height;
+
+                    switch (int.Parse(cell.Value.ToString()))
+                    {
+                        case 1: cms3.Items[0].Enabled = false; cms3.Items[1].Enabled = true; cms3.Items[2].Enabled = true; break;
+                        case 2: cms3.Items[0].Enabled = true; cms3.Items[1].Enabled = false; cms3.Items[2].Enabled = true; break;
+                        case 3: cms3.Items[0].Enabled = true; cms3.Items[1].Enabled = true; cms3.Items[2].Enabled = false; break;
+                    }
+
+                    cms3.Show(this, new Point(r, y + 2 * h));
+                }
             }
         }
 
@@ -71,6 +89,16 @@ namespace BMPL
                     }
                     break;
             }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            BMUiGear.changeUserStatus(dgv1,0);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            BMUiGear.changeUserStatus(dgv1, 1);
         }
     }
 }

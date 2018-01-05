@@ -46,10 +46,15 @@
             this.cms2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.cms1.SuspendLayout();
             this.cms2.SuspendLayout();
+            this.cms3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv1
@@ -179,7 +184,7 @@
             this.toolStripMenuItem1,
             this.toolStripMenuItem2});
             this.cms2.Name = "cms1";
-            this.cms2.Size = new System.Drawing.Size(198, 84);
+            this.cms2.Size = new System.Drawing.Size(198, 56);
             // 
             // toolStripMenuItem1
             // 
@@ -187,6 +192,7 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(197, 26);
             this.toolStripMenuItem1.Text = "Заблокировать";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -194,6 +200,39 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(197, 26);
             this.toolStripMenuItem2.Text = "Разблокировать";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // cms3
+            // 
+            this.cms3.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.cms3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cms3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5});
+            this.cms3.Name = "cms1";
+            this.cms3.Size = new System.Drawing.Size(195, 110);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Image = global::BMPL.Properties.Resources._operator;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(194, 26);
+            this.toolStripMenuItem3.Text = "Оператор";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Image = global::BMPL.Properties.Resources.auditor;
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(194, 26);
+            this.toolStripMenuItem4.Text = "Контроллер";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Image = global::BMPL.Properties.Resources.admin;
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(194, 26);
+            this.toolStripMenuItem5.Text = "Администратор";
             // 
             // BM_user
             // 
@@ -212,6 +251,7 @@
             this.menuStrip1.PerformLayout();
             this.cms1.ResumeLayout(false);
             this.cms2.ResumeLayout(false);
+            this.cms3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +273,9 @@
         private System.Windows.Forms.ContextMenuStrip cms2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ContextMenuStrip cms3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
     }
 }

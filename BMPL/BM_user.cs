@@ -100,5 +100,20 @@ namespace BMPL
         {
             BMUiGear.changeUserStatus(dgv1, 1);
         }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            BMUiGear.changeUserRole(dgv1, 1);
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            BMUiGear.changeUserRole(dgv1, 2);
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            BMUiGear.changeUserRole(dgv1, 3);
+        }
     }
 }

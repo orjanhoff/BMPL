@@ -215,5 +215,33 @@ namespace BMPL
 
             dgv.Rows[dgv.SelectedCells[0].RowIndex].Cells[3] = new BMUiCustomControls.DataGridViewImageButtonCell(status, icon, "Статус пользователя в системе");
         }
+
+        //Установка роли пользователя
+        public static void changeUserRole(DataGridView dgv, int role)
+        {
+            Image icon = Resources._operator;
+
+            switch (role)
+            {
+                case 2: icon = Resources.auditor; break;
+                case 3: icon = Resources.admin; break;
+            }
+
+            new BMDaGear().ExecuteQuery(
+                         "update user set iuserrole="   +
+                         role                           +
+                         AddLeadSpace("where iuserid=") +
+                         dgv.SelectedCells[0].Value.ToString()
+                         );
+
+            DataRow row = BMUiConst.UiConst.Cache["user"]
+                                                            .Select("iuserid=" + dgv.SelectedCells[0]
+                                                            .Value
+                                                            .ToString())
+                                                            .First();
+            row["iuserrole"] = role;
+
+            dgv.Rows[dgv.SelectedCells[0].RowIndex].Cells[4] = new BMUiCustomControls.DataGridViewImageButtonCell(role, icon, "Роль пользователя в системе");
+        }
     }
 }

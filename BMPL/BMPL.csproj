@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BMDaGear.cs" />
+    <Compile Include="BMIOGear.cs" />
     <Compile Include="BMUiCache.cs" />
     <Compile Include="BMUiConst.cs" />
     <Compile Include="BMUiCustomControls.cs" />

@@ -44,5 +44,11 @@ namespace BMPL
             BM_user b_user = new BM_user(BMUiConst.UiConst.Cache["user"]);
             b_user.ShowDialog();
         }
+
+        private void реестрAPIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BM_api b_api = new BM_api(BMUiConst.UiConst.Cache["api"]);
+            b_api.ShowDialog();
+        }
     }
 }

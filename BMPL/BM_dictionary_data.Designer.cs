@@ -72,7 +72,8 @@
             this.dgv1.AllowUserToDeleteRows = false;
             this.dgv1.AllowUserToResizeColumns = false;
             this.dgv1.AllowUserToResizeRows = false;
-            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv1.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -123,20 +124,20 @@
             this.tsmi1,
             this.tsmi2});
             this.cms1.Name = "cms1";
-            this.cms1.Size = new System.Drawing.Size(182, 84);
+            this.cms1.Size = new System.Drawing.Size(152, 56);
             // 
             // tsmi1
             // 
             this.tsmi1.Image = global::BMPL.Properties.Resources.minus;
             this.tsmi1.Name = "tsmi1";
-            this.tsmi1.Size = new System.Drawing.Size(181, 26);
+            this.tsmi1.Size = new System.Drawing.Size(151, 26);
             this.tsmi1.Text = "Удалить";
             // 
             // tsmi2
             // 
             this.tsmi2.Image = global::BMPL.Properties.Resources.plus;
             this.tsmi2.Name = "tsmi2";
-            this.tsmi2.Size = new System.Drawing.Size(181, 26);
+            this.tsmi2.Size = new System.Drawing.Size(151, 26);
             this.tsmi2.Text = "Добавить";
             // 
             // BM_dictionary_data

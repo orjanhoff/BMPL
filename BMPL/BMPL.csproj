@@ -76,6 +76,12 @@
     <Compile Include="BMUiCustomControls.cs" />
     <Compile Include="BMUiDictionary.cs" />
     <Compile Include="BMUiGear.cs" />
+    <Compile Include="BM_api.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BM_api.Designer.cs">
+      <DependentUpon>BM_api.cs</DependentUpon>
+    </Compile>
     <Compile Include="BM_dictionary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BM_api.resx">
+      <DependentUpon>BM_api.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BM_dictionary.resx">
       <DependentUpon>BM_dictionary.cs</DependentUpon>
     </EmbeddedResource>

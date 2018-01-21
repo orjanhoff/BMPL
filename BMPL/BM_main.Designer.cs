@@ -164,6 +164,7 @@
             this.реестрAPIToolStripMenuItem.Name = "реестрAPIToolStripMenuItem";
             this.реестрAPIToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.реестрAPIToolStripMenuItem.Text = "Реестр API";
+            this.реестрAPIToolStripMenuItem.Click += new System.EventHandler(this.реестрAPIToolStripMenuItem_Click);
             // 
             // отчетыToolStripMenuItem
             // 

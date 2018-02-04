@@ -51,7 +51,7 @@ namespace BMPL
                     int y = senderGrid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location.Y;
                     int h = senderGrid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Height;
 
-                    switch (int.Parse(cell.Value.ToString()).Equals(1))
+                    switch (int.Parse(cell.Val.ToString()).Equals(1))
                     {
                         case true:  cms2.Items[0].Enabled = true; cms2.Items[1].Enabled = false; break;
                         case false: cms2.Items[0].Enabled = false; cms2.Items[1].Enabled = true; ; break;
@@ -66,7 +66,7 @@ namespace BMPL
                     int y = senderGrid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location.Y;
                     int h = senderGrid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Height;
 
-                    switch (int.Parse(cell.Value.ToString()))
+                    switch (int.Parse(cell.Val.ToString()))
                     {
                         case 1: cms3.Items[0].Enabled = false; cms3.Items[1].Enabled = true; cms3.Items[2].Enabled = true; break;
                         case 2: cms3.Items[0].Enabled = true; cms3.Items[1].Enabled = false; cms3.Items[2].Enabled = true; break;
@@ -114,6 +114,11 @@ namespace BMPL
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
             BMUiGear.changeUserRole(dgv1, 3);
+        }
+
+        private void cms1_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

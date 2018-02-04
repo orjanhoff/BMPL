@@ -20,17 +20,9 @@ namespace BMPL
             //this.MaximizeBox = false;
             FormBorderStyle = FormBorderStyle.Fixed3D;
 
-            BM_service bm_service = new BM_service();
+            BM_service bm_service = new BM_service(BMUiConst.UiConst.Cache["service"]);
             bm_service.MdiParent = this;
             bm_service.Show();
-
-            switch (BMUiConst.UiConst.Equals(null))
-            {
-                case true:
-                    BMUiCustomControls.UIException.Alert("{0}: Ошибка при построении кэша", "Ошибка приложения");
-                    break;
-                default: break;
-            }
         }
 
         private void словариToolStripMenuItem_Click(object sender, EventArgs e)

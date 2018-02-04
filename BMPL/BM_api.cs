@@ -27,7 +27,7 @@ namespace BMPL
 
             try
             {
-                BMUiGear.DgvFillData(dgv1, data, true, "iapiid", "sapiname","sapipath","sapiargs","sapidesc","sapialias");
+                BMUiGear.DgvFillData(dgv1, data, 6, true);
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
-﻿using BMPL.Properties;
+﻿using AdvancedDataGridView;
+using BMPL.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -85,6 +86,16 @@ namespace BMPL
             _dgv.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
+        //Установка атрибутов дерева
+        public static void TreeConfigureService(TreeGridView tree)
+        {
+            tree.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            tree.EnableHeadersVisualStyles = false;
+            tree.ShowCellToolTips = true;
+            tree.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            tree.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         //Пошаговое заполнение сетки
         public static void DgvFillData(DataGridView _dgv, DataTable _dtbl, bool addbtn = true, params string[] columns)
         {
@@ -101,23 +112,7 @@ namespace BMPL
                     break;
             }
 
-            foreach (DataRow row in _dtbl.Rows)
-            {
-                int num = dgvAddRow(_dgv);
-
-                for (int i = 0; i<= columns.Length-1; i++)
-                {
-                    _dgv.Rows[num].Cells[i].Value = row[columns[i]];
-
-                    switch (addbtn && i.Equals(columns.Length-1))
-                    {
-                        case true:
-                            _dgv.Rows[num].Cells[columns.Length] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.view, "Просмотр справочника");
-                            break;
-                        default: break;
-                    }
-                }
-            }
+            DgvFillByRow(_dgv, _dtbl, 0, addbtn, columns);
         }
 
         public static void DgvFillData(DataGridView _dgv, DataTable _dtbl, params string[] columns)
@@ -179,6 +174,134 @@ namespace BMPL
                             break;
                         default: break;
                     }
+                }
+            }
+        }
+
+        public static void DgvFillData(DataGridView _dgv, DataTable _dtbl, int columns, bool addbtn = true)
+        {
+            switch (columns > 0)
+            {
+                case false: throw new BMUiCustomControls.UIException("{0}: Не указаны наименования колонок в таблице с данными");
+                default:
+                    switch (_dtbl.Rows.Count > 0)
+                    {
+                        case false: throw new BMUiCustomControls.UIException("{0}: Таблица с данными не содержит строк");
+                        default: break;
+                    }
+
+                    break;
+            }
+
+            DgvFillByRow(_dgv, _dtbl, columns, addbtn);
+        }
+
+        //Добавление данных на DGV
+        private static void DgvFillByRow(DataGridView _dgv, DataTable _dtbl, int col = 0, bool addbtn = true, params string[] columns)
+        {
+            if (col.Equals(0) && columns.Length.Equals(0))
+            {
+                throw new BMUiCustomControls.UIException("{0}: Не указан массив для определения данных");
+            }
+
+            if (col > 0)
+            {
+                foreach (DataRow row in _dtbl.Rows)
+                {
+                    int num = dgvAddRow(_dgv);
+
+                    for (int i = 0; i <= col - 1; i++)
+                    {
+                        _dgv.Rows[num].Cells[i].Value = row[i];
+
+                        switch (addbtn && i.Equals(col - 1))
+                        {
+                            case true:
+                                _dgv.Rows[num].Cells[col] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.view, "Просмотр");
+                                break;
+                            default: break;
+                        }
+                    }
+                }
+            }
+
+            else
+            {
+                foreach (DataRow row in _dtbl.Rows)
+                {
+                    int num = dgvAddRow(_dgv);
+
+                    for (int i = 0; i <= columns.Length - 1; i++)
+                    {
+                        _dgv.Rows[num].Cells[i].Value = row[columns[i]];
+
+                        switch (addbtn && i.Equals(columns.Length - 1))
+                        {
+                            case true:
+                                _dgv.Rows[num].Cells[columns.Length] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.view, "Просмотр");
+                                break;
+                            default: break;
+                        }
+                    }
+                }
+            }
+        }
+
+        //Добавление данных на дерево
+        public static void TreeFillData(TreeGridView tree, DataTable _dtbl)
+        {
+                    switch (_dtbl.Rows.Count > 0)
+                    {
+                        case false: throw new BMUiCustomControls.UIException("{0}: Таблица с данными не содержит строк");
+                        default: break;
+                    }
+
+            //DataTable cdata = (from DataRow row in _dtbl.Rows where row.Field<Int64>("isrvparentid").Equals(0) select row).CopyToDataTable();
+
+            //Font boldFont = new Font(tree.DefaultCellStyle.Font, FontStyle.Bold);
+
+            TreeGridNode node = new TreeGridNode();
+            TreeGridNode node2 = new TreeGridNode();
+
+            foreach (DataRow row in _dtbl.Rows)
+            {
+                if (Int64.Parse(row["isrvparentid"].ToString()).Equals(0))
+                {
+                    node = tree.Nodes.Add(null, @row[1], @row[2], @row[3],null,null,null,null,@row[0]);
+                    node.ImageIndex = 0;
+
+                    int i = tree.Nodes.Count - 1;
+
+                    switch (Int64.Parse(row[4].ToString()))
+                    {
+                        case 0: tree.Rows[i].Cells[4].Value = Resources.off; break;
+                        case 1: tree.Rows[i].Cells[4].Value = Resources.on; break;
+                        default: tree.Rows[i].Cells[4].Value = Resources.wrong; break;
+                    }
+
+                    tree.Rows[i].Cells[5] = new BMUiCustomControls.DataGridViewImageButtonCell(@row[4], Resources.power, "Включить/Выключить сервис");
+                    tree.Rows[i].Cells[6] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.srvconfig, "Настройки сервиса");
+                    tree.Rows[i].Cells[7] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.srvxml, "XML файл сервиса");
+                }
+                else
+                {
+                    node2 = node.Nodes.Add(null, @row[1], @row[2], @row[3], null, null, null, null, @row[0]);
+                    node2.ImageIndex = 1;
+
+                    int i = node.Nodes.Count - 1;
+
+                    switch (Int64.Parse(row[4].ToString()))
+                    {
+                        case 0: node.Nodes[i].Cells[4].Value = Resources.off; break;
+                        case 1: node.Nodes[i].Cells[4].Value = Resources.on; break;
+                        default: node.Nodes[i].Cells[4].Value = Resources.wrong; break;
+                    }
+
+                    node.Nodes[i].Cells[5] = new BMUiCustomControls.DataGridViewImageButtonCell(@row[4], Resources.power, "Включить/Выключить сервис");
+                    node.Nodes[i].Cells[6] = new DataGridViewTextBoxCell();
+                    node.Nodes[i].Cells[6].ReadOnly = true;
+                    node.Nodes[i].Cells[7] = new DataGridViewTextBoxCell();
+                    node.Nodes[i].Cells[7].ReadOnly = true;
                 }
             }
         }

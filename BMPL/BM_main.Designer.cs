@@ -192,7 +192,7 @@
             // 
             // руководствоПользователяToolStripMenuItem
             // 
-            this.руководствоПользователяToolStripMenuItem.Image = global::BMPL.Properties.Resources.unlock;
+            this.руководствоПользователяToolStripMenuItem.Image = global::BMPL.Properties.Resources.parentservice;
             this.руководствоПользователяToolStripMenuItem.Name = "руководствоПользователяToolStripMenuItem";
             this.руководствоПользователяToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
             this.руководствоПользователяToolStripMenuItem.Text = "Руководство пользователя";

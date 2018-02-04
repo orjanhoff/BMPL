@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,22 @@ namespace BMPL
         //Описание Api для запуска
         public class WinBmApi
         {
+            public string WBAid;
             public string WBAname;
             public string WBApath;
             public string WBAargs;
             public string WBAdesc;
+            public string WBAalias;
+
+            public WinBmApi(DataRow row)
+            {
+                WBAid       = row[0].ToString();
+                WBAname     = row[1].ToString();
+                WBApath     = row[2].ToString();
+                WBAargs     = row[3].ToString();
+                WBAdesc     = row[4].ToString();
+                WBAalias    = row[5].ToString();
+            }
         } 
         
         

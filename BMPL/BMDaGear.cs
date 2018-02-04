@@ -54,7 +54,7 @@ namespace BMPL
             sql_cmd = sql_con.CreateCommand();
             sql_cmd.CommandText = txtQuery;
             sql_cmd.ExecuteNonQuery();
-            sql_con.Close();
+            CloseConnection();
         }
 
         public DataTable SelectData(string tbl_name, string where=null)

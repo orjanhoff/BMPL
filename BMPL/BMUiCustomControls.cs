@@ -9,7 +9,7 @@ namespace BMPL
         public class DataGridViewImageButtonCell : DataGridViewButtonCell
         {
             Image icon;
-            object value;
+            object val;
 
             public DataGridViewImageButtonCell(Image img)
             {
@@ -24,14 +24,14 @@ namespace BMPL
 
             public DataGridViewImageButtonCell(object val, Image img, string tooltiptext)
             {
-                value = val;
+                this.val = val;
                 icon = img;
                 base.ToolTipText = tooltiptext;
             }
 
-            public object Value
+            public object Val
             {
-                get { return this.value; }
+                get { return this.val; }
             }
 
             public Image Icon
@@ -65,22 +65,6 @@ namespace BMPL
             public static void Inform(string msg, string header)
             {
                 MessageBox.Show(msg, string.Format("[{0}]", header ?? "Information"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        public static void SetToolTip(Control o, string t = null)
-        {
-            ToolTip tt = new ToolTip();
-            tt.ToolTipIcon = ToolTipIcon.None;
-
-            switch (string.IsNullOrEmpty(t))
-            {
-                case true:
-                    tt.SetToolTip(o, o.Name.ToString());
-                    break;
-                case false:
-                    tt.SetToolTip(o, t);
-                    break;
             }
         }
     }

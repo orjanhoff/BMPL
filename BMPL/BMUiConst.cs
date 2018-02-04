@@ -16,10 +16,12 @@ namespace BMPL
         public static string bm_folder_ext = "extension";
 
         public static string bm_name_db = "bod.bmds.db";
+        public static string bm_name_nosql = "bod.bmds.oper.db";
         public static string bm_name_xml = "bm_init_settings.xml";
         public static string bm_name_sys = "sys_table";
 
         public static string bm_path_db = Path.Combine(bm_app_path, bm_folder_data, bm_name_db);
+        public static string bm_path_nosql = Path.Combine(bm_app_path, bm_folder_data, bm_name_nosql);
         public static string bm_path_xml = Path.Combine(bm_app_path, bm_folder_data, bm_name_xml);
 
         public static BMUiConst UiConst

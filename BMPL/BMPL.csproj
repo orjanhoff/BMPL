@@ -43,6 +43,9 @@
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ExpandableGridView">
+      <HintPath>..\..\..\..\TreeGridViewRebuilt\TreeGridview\TreeGridView\bin\Release\ExpandableGridView.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -134,14 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="data\bod.bmds.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -150,6 +148,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -201,6 +204,16 @@
     <Content Include="data\bm_init_settings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\parentservice1.png" />
+    <None Include="Resources\childservice.png" />
+    <None Include="Resources\parentservice.png" />
+    <None Include="Resources\service.png" />
+    <None Include="Resources\on.png" />
+    <None Include="Resources\off.png" />
+    <None Include="Resources\wrong.gif" />
+    <None Include="Resources\csharp.png" />
+    <None Include="Resources\srvxml.png" />
+    <None Include="Resources\srvconfig.png" />
     <None Include="Resources\operator.png" />
     <None Include="Resources\auditor.png" />
     <None Include="Resources\admin.png" />

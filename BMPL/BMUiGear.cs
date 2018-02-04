@@ -267,41 +267,51 @@ namespace BMPL
             {
                 if (Int64.Parse(row["isrvparentid"].ToString()).Equals(0))
                 {
-                    node = tree.Nodes.Add(null, @row[1], @row[2], @row[3],null,null,null,null,@row[0]);
+                    node = tree.Nodes.Add(null, @row["ssrvname"], @row["ssrvversion"], @row["ssrvdescription"],null,null,null,null,@row["isrvid"], @row["isrvparentid"]);
                     node.ImageIndex = 0;
 
-                    int i = tree.Nodes.Count - 1;
+                    BMController.ChangeServiceStatus(int.Parse(row[0].ToString()), int.Parse(row[4].ToString()));
 
                     switch (Int64.Parse(row[4].ToString()))
                     {
-                        case 0: tree.Rows[i].Cells[4].Value = Resources.off; break;
-                        case 1: tree.Rows[i].Cells[4].Value = Resources.on; break;
-                        default: tree.Rows[i].Cells[4].Value = Resources.wrong; break;
+                        case 0: tree.Rows[node.Index].Cells[4].Value = Resources.off; break;
+                        case 1: tree.Rows[node.Index].Cells[4].Value = Resources.on; break;
+                        default: tree.Rows[node.Index].Cells[4].Value = Resources.wrong; break;
                     }
 
-                    tree.Rows[i].Cells[5] = new BMUiCustomControls.DataGridViewImageButtonCell(@row[4], Resources.power, "Включить/Выключить сервис");
-                    tree.Rows[i].Cells[6] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.srvconfig, "Настройки сервиса");
-                    tree.Rows[i].Cells[7] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.srvxml, "XML файл сервиса");
-                }
-                else
-                {
-                    node2 = node.Nodes.Add(null, @row[1], @row[2], @row[3], null, null, null, null, @row[0]);
-                    node2.ImageIndex = 1;
+                    tree.Rows[node.Index].Cells[5] = new BMUiCustomControls.DataGridViewImageButtonCell(@row[4], Resources.power, "Включить/Выключить сервис");
+                    tree.Rows[node.Index].Cells[6] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.srvconfig, "Настройки сервиса");
+                    tree.Rows[node.Index].Cells[7] = new BMUiCustomControls.DataGridViewImageButtonCell(Resources.srvxml, "XML файл сервиса");
 
-                    int i = node.Nodes.Count - 1;
+                    //Добавление типов инициализации запуска сервиса
+                    DataTable cdata = 
+                                        (
+                                            from DataRow rowwt in BMUiConst.UiConst.Cache["service_work_type"].Rows
+                                            where rowwt.Field<Int64>("isrvid").Equals(row["isrvid"]) select rowwt
+                                        )   .CopyToDataTable();
 
-                    switch (Int64.Parse(row[4].ToString()))
+                    if (cdata.Rows.Count>0)
                     {
-                        case 0: node.Nodes[i].Cells[4].Value = Resources.off; break;
-                        case 1: node.Nodes[i].Cells[4].Value = Resources.on; break;
-                        default: node.Nodes[i].Cells[4].Value = Resources.wrong; break;
-                    }
+                        foreach (DataRow crowwt in cdata.Rows)
+                        {
+                            node2 = node.Nodes.Add(null, @crowwt["swtname"], null, @crowwt["swtdesc"], null, null, null, null, @crowwt["isrvworktype"], @crowwt["isrvid"]);
+                            node2.ImageIndex = 1;
 
-                    node.Nodes[i].Cells[5] = new BMUiCustomControls.DataGridViewImageButtonCell(@row[4], Resources.power, "Включить/Выключить сервис");
-                    node.Nodes[i].Cells[6] = new DataGridViewTextBoxCell();
-                    node.Nodes[i].Cells[6].ReadOnly = true;
-                    node.Nodes[i].Cells[7] = new DataGridViewTextBoxCell();
-                    node.Nodes[i].Cells[7].ReadOnly = true;
+                            switch (Int64.Parse(crowwt[4].ToString()))
+                            {
+                                case 1: node.Nodes[node2.Index].Cells[4].Value = Resources.checkok; break;
+                                default: node.Nodes[node2.Index].Cells[4].Value = Resources.checkno; break;
+                            }
+
+                            node.Nodes[node2.Index].Cells[2] = new DataGridViewTextBoxCell();
+                            node.Nodes[node2.Index].Cells[2].ReadOnly = true;
+                            node.Nodes[node2.Index].Cells[5] = new BMUiCustomControls.DataGridViewImageButtonCell(@crowwt[4], Resources.wtpower, "Включить/Выключить опцию");
+                            node.Nodes[node2.Index].Cells[6] = new DataGridViewTextBoxCell();
+                            node.Nodes[node2.Index].Cells[6].ReadOnly = true;
+                            node.Nodes[node2.Index].Cells[7] = new DataGridViewTextBoxCell();
+                            node.Nodes[node2.Index].Cells[7].ReadOnly = true;
+                        }
+                    }
                 }
             }
         }
@@ -365,6 +375,65 @@ namespace BMPL
             row["iuserrole"] = role;
 
             dgv.Rows[dgv.SelectedCells[0].RowIndex].Cells[4] = new BMUiCustomControls.DataGridViewImageButtonCell(role, icon, "Роль пользователя в системе");
+        }
+
+        //Установка статуса сервиса
+        public static void changeServiceStatus (TreeGridView tree, int status)
+        {
+            Image icon = Resources.off;
+
+            switch (status)
+            {
+                case 1: icon = Resources.on; break;
+            }
+
+            new BMDaGear().ExecuteQuery(
+                                     "update service set isrvstatus=" +
+                                     status +
+                                     AddLeadSpace("where isrvid=") +
+                                     tree.SelectedCells[8].Value.ToString()
+                                     );
+
+            DataRow row = BMUiConst.UiConst.Cache["service"]
+                                                            .Select("isrvid=" + tree.SelectedCells[8]
+                                                            .Value
+                                                            .ToString())
+                                                            .First();
+            row["isrvstatus"] = status;
+
+            BMController.ChangeServiceStatus(int.Parse(tree.SelectedCells[8].Value.ToString()),status);
+
+            tree.SelectedCells[4].Value = icon;
+            tree.Rows[tree.SelectedCells[5].RowIndex].Cells[5] = new BMUiCustomControls.DataGridViewImageButtonCell(status, Resources.power, "Включить/Выключить сервис");
+        }
+
+        //Установка статуса типа обработки
+        public static void changeWTStatus(TreeGridView tree, int status)
+        {
+            Image icon = Resources.checkno;
+
+            switch (status)
+            {
+                case 1: icon = Resources.checkok; break;
+            }
+            new BMDaGear().ExecuteQuery(
+                                     "update service_work_type set iwtstatus=" +
+                                     status +
+                                     AddLeadSpace("where isrvid=") +
+                                     tree.SelectedCells[9].Value.ToString() +
+                                     AddLeadSpace("and isrvworktype=") +
+                                     tree.SelectedCells[8].Value.ToString()
+                                     );
+
+            DataRow row = BMUiConst.UiConst.Cache["service_work_type"]
+                                                            .Select("isrvid=" + tree.SelectedCells[9].Value.ToString() + 
+                                                                     AddLeadSpace("and isrvworktype=") + tree.SelectedCells[8].Value.ToString()
+                                                                   )
+                                                            .First();
+            row["iwtstatus"] = status;
+
+            tree.SelectedCells[4].Value = icon;
+            tree.Rows[tree.SelectedCells[5].RowIndex].Cells[5] = new BMUiCustomControls.DataGridViewImageButtonCell(status, Resources.wtpower, "Включить/Выключить опцию");
         }
     }
 }

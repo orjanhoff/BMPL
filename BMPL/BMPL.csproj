@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BMController.cs" />
     <Compile Include="BMDaGear.cs" />
     <Compile Include="BMIOGear.cs" />
     <Compile Include="BMUiCache.cs" />
@@ -204,6 +205,9 @@
     <Content Include="data\bm_init_settings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\wtpower.png" />
+    <None Include="Resources\checkno.png" />
+    <None Include="Resources\checkok.png" />
     <None Include="Resources\parentservice1.png" />
     <None Include="Resources\childservice.png" />
     <None Include="Resources\parentservice.png" />

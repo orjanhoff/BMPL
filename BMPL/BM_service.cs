@@ -18,12 +18,12 @@ namespace BMPL
         {
             InitializeComponent();
 
-            BMUiGear.DgvAlignCenterAndLeft(treeGridView1);
-            BMUiGear.TreeConfigureService(treeGridView1);
+            BMUiGear.DgvAlignCenterAndLeft(tree1);
+            BMUiGear.TreeConfigureService(tree1);
 
             try
             {
-                BMUiGear.TreeFillData(treeGridView1, data);
+                BMUiGear.TreeFillData(tree1, data);
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace BMPL
             this.imageStrip.TransparentColor = Color.Magenta;
             this.imageStrip.Images.AddStrip(Resources.parentservice);
             this.imageStrip.Images.AddStrip(Resources.childservice);
-            treeGridView1.ImageList = imageStrip;
+            tree1.ImageList = imageStrip;
         }
 
         private void treeGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -50,7 +50,37 @@ namespace BMPL
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                MessageBox.Show(treeGridView1.Rows[treeGridView1.SelectedCells[0].RowIndex].Cells[8].Value.ToString());
+                if (e.ColumnIndex == 5 && Int64.Parse(tree1.SelectedCells[9].Value.ToString()).Equals(0))
+                {
+                    var q = MessageBox.Show("Изменить состояние сервиса?", tree1.SelectedCells[1].Value.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (q == DialogResult.Yes)
+                    {
+                        var dgvibc = tree1.SelectedCells[5] as BMUiCustomControls.DataGridViewImageButtonCell;
+
+                        switch (int.Parse(dgvibc.Val.ToString()))
+                        {
+                            case 1: BMUiGear.changeServiceStatus(tree1, 0); break;
+                            case 0: BMUiGear.changeServiceStatus(tree1, 1); break;
+                        }
+                    }
+                }
+
+                if (e.ColumnIndex == 5 && !Int64.Parse(tree1.SelectedCells[9].Value.ToString()).Equals(0))
+                {
+                    var q = MessageBox.Show("Изменить статус обработки сервиса?", tree1.SelectedCells[1].Value.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (q == DialogResult.Yes)
+                    {
+                        var dgvibc = tree1.SelectedCells[5] as BMUiCustomControls.DataGridViewImageButtonCell;
+
+                        switch (int.Parse(dgvibc.Val.ToString()))
+                        {
+                            case 1: BMUiGear.changeWTStatus(tree1, 0); break;
+                            case 0: BMUiGear.changeWTStatus(tree1, 1); break;
+                        }
+                    }
+                }
             }
         }
 

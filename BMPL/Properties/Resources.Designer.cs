@@ -123,6 +123,26 @@ namespace BMPL.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap checkno {
+            get {
+                object obj = ResourceManager.GetObject("checkno", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap checkok {
+            get {
+                object obj = ResourceManager.GetObject("checkok", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap childservice {
             get {
                 object obj = ResourceManager.GetObject("childservice", resourceCulture);
@@ -346,6 +366,16 @@ namespace BMPL.Properties {
         internal static System.Drawing.Bitmap wrong {
             get {
                 object obj = ResourceManager.GetObject("wrong", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wtpower {
+            get {
+                object obj = ResourceManager.GetObject("wtpower", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

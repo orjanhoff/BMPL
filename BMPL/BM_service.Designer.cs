@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.treeGridView1 = new AdvancedDataGridView.TreeGridView();
+            this.tree1 = new AdvancedDataGridView.TreeGridView();
             this.imageStrip = new System.Windows.Forms.ImageList(this.components);
             this.attachmentColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column2 = new AdvancedDataGridView.TreeGridColumn();
@@ -41,23 +41,24 @@
             this.b2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.b3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.treeGridView1)).BeginInit();
+            this.parentid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.tree1)).BeginInit();
             this.SuspendLayout();
             // 
-            // treeGridView1
+            // tree1
             // 
-            this.treeGridView1.AllowUserToAddRows = false;
-            this.treeGridView1.AllowUserToDeleteRows = false;
-            this.treeGridView1.AllowUserToOrderColumns = true;
-            this.treeGridView1.AllowUserToResizeColumns = false;
-            this.treeGridView1.AllowUserToResizeRows = false;
-            this.treeGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tree1.AllowUserToAddRows = false;
+            this.tree1.AllowUserToDeleteRows = false;
+            this.tree1.AllowUserToOrderColumns = true;
+            this.tree1.AllowUserToResizeColumns = false;
+            this.tree1.AllowUserToResizeRows = false;
+            this.tree1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.treeGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.treeGridView1.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            this.treeGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tree1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tree1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.tree1.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.tree1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.attachmentColumn,
             this.Column2,
             this.Column3,
@@ -66,7 +67,8 @@
             this.b1,
             this.b2,
             this.b3,
-            this.id});
+            this.id,
+            this.parentid});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -74,17 +76,17 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.treeGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.treeGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.treeGridView1.ImageList = null;
-            this.treeGridView1.Location = new System.Drawing.Point(12, 12);
-            this.treeGridView1.Name = "treeGridView1";
-            this.treeGridView1.RowHeadersVisible = false;
-            this.treeGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.treeGridView1.ShowLines = false;
-            this.treeGridView1.Size = new System.Drawing.Size(990, 275);
-            this.treeGridView1.TabIndex = 4;
-            this.treeGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.treeGridView1_CellContentClick);
+            this.tree1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.tree1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.tree1.ImageList = null;
+            this.tree1.Location = new System.Drawing.Point(12, 12);
+            this.tree1.Name = "tree1";
+            this.tree1.RowHeadersVisible = false;
+            this.tree1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tree1.ShowLines = false;
+            this.tree1.Size = new System.Drawing.Size(990, 275);
+            this.tree1.TabIndex = 4;
+            this.tree1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.treeGridView1_CellContentClick);
             // 
             // imageStrip
             // 
@@ -183,25 +185,32 @@
             this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.id.Visible = false;
             // 
+            // parentid
+            // 
+            this.parentid.HeaderText = "";
+            this.parentid.Name = "parentid";
+            this.parentid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.parentid.Visible = false;
+            // 
             // BM_service
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1014, 411);
-            this.Controls.Add(this.treeGridView1);
+            this.Controls.Add(this.tree1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "BM_service";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Панель управления сервисами";
             this.Load += new System.EventHandler(this.BM_service_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.treeGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tree1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private AdvancedDataGridView.TreeGridView treeGridView1;
+        private AdvancedDataGridView.TreeGridView tree1;
         private System.Windows.Forms.ImageList imageStrip;
         private System.Windows.Forms.DataGridViewImageColumn attachmentColumn;
         private AdvancedDataGridView.TreeGridColumn Column2;
@@ -212,5 +221,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn b2;
         private System.Windows.Forms.DataGridViewButtonColumn b3;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn parentid;
     }
 }

@@ -32,6 +32,7 @@ namespace BMPL
             public object Val
             {
                 get { return this.val; }
+                set { this.val = value; }
             }
 
             public Image Icon
@@ -46,6 +47,7 @@ namespace BMPL
             }
         }
 
+        [Serializable]
         public class UIException : Exception
         {
             public UIException() : base() { }

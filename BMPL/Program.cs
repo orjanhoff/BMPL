@@ -30,6 +30,9 @@ namespace BMPL
                 return;
             }
 
+            BMLoggingGear logger = new BMLoggingGear(typeof(Program), BMInitGear.Bm_path_log);
+            logger.Trace("Запуск основного рабочего экрана");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new BM_main());

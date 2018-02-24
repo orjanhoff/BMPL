@@ -14,18 +14,21 @@ namespace BMPL
 {
     public partial class BM_service : Form
     {
+        BMLoggingGear logger = new BMLoggingGear(typeof(BM_service), BMInitGear.Bm_path_log);
+
         public BM_service(DataTable data)
         {
+            logger.Trace("Панель управления сервисами: инициализация");
             InitializeComponent();
 
-            //BMUiGear.DgvAlignCenterAndLeft(tree1);
+            logger.Trace("Панель управления сервисами: установка атрибутов визуализации");
             BMGridGear.SetCellAlignment(tree1, BMGridGear.CellAlign.CenterAndLeft);
-            //BMUiGear.TreeConfigureService(tree1);
             BMGridGear.SetVisualAttributes(tree1, BMGridGear.AttrSetType.Service);
+
+            logger.Trace("Панель управления сервисами: построение данных для отображения");
 
             try
             {
-                //BMUiGear.TreeFillData(tree1, data);
                 new BMGridGear(BMGridGear.AttrSetType.Service).AssignTable(tree1, data);
             }
             catch (Exception ex)
@@ -34,7 +37,7 @@ namespace BMPL
             }
         }
 
-        private void BM_service_Load(object sender, EventArgs e)
+       private void BM_service_Load(object sender, EventArgs e)
         {
             attachmentColumn.DefaultCellStyle.NullValue = null;
 

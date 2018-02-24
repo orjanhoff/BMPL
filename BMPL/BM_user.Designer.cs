@@ -110,7 +110,6 @@
             this.tsmi2});
             this.cms1.Name = "cms1";
             this.cms1.Size = new System.Drawing.Size(182, 84);
-            this.cms1.Opening += new System.ComponentModel.CancelEventHandler(this.cms1_Opening);
             // 
             // cms2
             // 

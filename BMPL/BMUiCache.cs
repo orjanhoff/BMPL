@@ -8,31 +8,6 @@ namespace BMPL
 {
     class BMUiCache
     {
-        //Кэширование конфигурации из xml-файла
-        private class preCache:List<string>
-        {
-            private XmlDocument xml_doc = new XmlDocument();
-
-            public preCache FillPreCache ()
-            {
-                xml_doc.Load(BMUiConst.bm_path_xml);
-                string xpath = string.Format("//section");
-
-                foreach (XmlNode node in xml_doc.DocumentElement.SelectNodes(xpath))
-                {
-                    xpath = string.Format("//section[@name='{0}']/setting", node.Attributes["name"].Value);
-
-                    foreach (XmlNode innode in node.SelectNodes(xpath))
-                    {
-
-                        Add(innode.Attributes["name"].Value);
-                    }
-                }
-
-                return this;
-            }
-        }
-
         //Кэш бизнес-сущностей
         public class Cache:SortedList<string,DataTable>
         {
@@ -54,7 +29,7 @@ namespace BMPL
             {
                 //Билдим кэш по БД
                 foreach (
-                            string table in bm_da_gear.SelectData(BMUiConst.bm_name_sys, "icacheflag=1")
+                            string table in bm_da_gear.SelectData(BMInitGear.Bm_name_sys, "icacheflag=1")
                                             .AsEnumerable()
                                             .Select(r => r.Field<string>("stblname"))
                                             .ToList()

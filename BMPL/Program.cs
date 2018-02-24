@@ -14,12 +14,20 @@ namespace BMPL
         [STAThread]
         static void Main()
         {
-            switch (BMUiConst.UiConst.Equals(null))
+            try
             {
-                case true:
-                    BMUiCustomControls.UIException.Alert("{0}: Ошибка при построении кэша", "Ошибка приложения");
-                    break;
-                default: break;
+                switch (BMInitGear.UiConst.Equals(null))
+                {
+                    case true:
+                        BMUiGear.Alert("{0}: Ошибка при построении кэша", "Ошибка приложения");
+                        break;
+                    default: break;
+                }
+            }
+            catch (Exception ex)
+            {
+                BMUiGear.Alert("{0}: Ошибка при инициализации: " + ex, "Ошибка приложения");
+                return;
             }
 
             Application.EnableVisualStyles();

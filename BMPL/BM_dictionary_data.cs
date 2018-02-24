@@ -26,20 +26,20 @@ namespace BMPL
             {
                 case 2: Text = data[1] ?? data[0]; break;
                 case 1: Text = data[0]; break;
-                case 0: BMUiCustomControls.UIException.Alert("{0}: Не задан справочник", "Ошибка приложения");
+                case 0: BMUiGear.Alert("{0}: Не задан справочник", "Ошибка приложения");
                     return;
             }
-            
-            BMUiGear.DgvAlignCenterAndLeft(dgv1);
-            BMUiGear.DgvConfigureDictionary(dgv1);
+
+            BMGridGear.SetCellAlignment(dgv1, BMGridGear.CellAlign.CenterAndLeft);
+            BMGridGear.SetVisualAttributes(dgv1);
 
             try
             {
-                BMUiGear.DgvFillData(dgv1, BMUiConst.UiConst.Cache[data[0]], false, "ierrcode", "serrmsg");
+                new BMGridGear().AssignTable(dgv1, BMInitGear.UiConst.Cache[data[0]], 0, false, "ierrcode", "serrmsg");
             }
             catch (Exception ex)
             {
-                BMUiCustomControls.UIException.Alert(ex.Message, "Ошибка приложения");
+                BMUiGear.Alert(ex.Message, "Ошибка приложения");
             }
         }
 

@@ -28,7 +28,7 @@ namespace BMPL
 
         public BMDaGear()
         {
-            this.db_url = string.Format("Data Source={0};Version=3;New=False;Compress=True;", BMUiConst.bm_path_db);
+            this.db_url = string.Format("Data Source={0};Version=3;New=False;Compress=True;", BMInitGear.Bm_path_db);
         }
 
         private void SetConnection()

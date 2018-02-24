@@ -20,26 +20,26 @@ namespace BMPL
             //this.MaximizeBox = false;
             FormBorderStyle = FormBorderStyle.Fixed3D;
 
-            BM_service bm_service = new BM_service(BMUiConst.UiConst.Cache["service"]);
+            BM_service bm_service = new BM_service(BMInitGear.UiConst.Cache["service"]);
             bm_service.MdiParent = this;
             bm_service.Show();
         }
 
         private void словариToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BM_dictionary b_dictionary = new BM_dictionary(BMUiConst.UiConst.Cache["sys_table"]);
+            BM_dictionary b_dictionary = new BM_dictionary(BMInitGear.UiConst.Cache["sys_table"]);
             b_dictionary.ShowDialog();
         }
 
         private void пользователиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BM_user b_user = new BM_user(BMUiConst.UiConst.Cache["user"]);
+            BM_user b_user = new BM_user(BMInitGear.UiConst.Cache["user"]);
             b_user.ShowDialog();
         }
 
         private void реестрAPIToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BM_api b_api = new BM_api(BMUiConst.UiConst.Cache["api"]);
+            BM_api b_api = new BM_api(BMInitGear.UiConst.Cache["api"]);
             b_api.ShowDialog();
         }
     }

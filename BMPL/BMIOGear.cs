@@ -30,8 +30,7 @@ namespace BMPL
                 WBAalias    = row[5].ToString();
             }
         } 
-        
-        
+
         //DTO ответов от системы Windows
         public class WinStdOut
         {
@@ -92,7 +91,5 @@ namespace BMPL
                 return new WinStdOut(ex);
             }
         }
-
-
     }
 }

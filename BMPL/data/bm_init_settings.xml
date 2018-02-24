@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <init>
-  <section name="data_tables">
-    <setting name="error_arj" comment="Справочник ошибок arj.exe" />
-    <setting name="error_scsignex" comment="Справочник ошибок scsignex.exe" />
-    <setting name="service" comment="Данные сервисов" />
+  <section name="init">
+    <setting name="initial_database" value="bod.bmds.db" comment="Конфигурационная база данных" />
+    <setting name="operational_database" value="bod.bmds.oper.db" comment="Операционная база данных" />
+    <setting name="sys_table" value="sys_table" comment="Наименование системной таблицы" />
   </section>
 </init> 

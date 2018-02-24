@@ -18,16 +18,19 @@ namespace BMPL
         {
             InitializeComponent();
 
-            BMUiGear.DgvAlignCenterAndLeft(tree1);
-            BMUiGear.TreeConfigureService(tree1);
+            //BMUiGear.DgvAlignCenterAndLeft(tree1);
+            BMGridGear.SetCellAlignment(tree1, BMGridGear.CellAlign.CenterAndLeft);
+            //BMUiGear.TreeConfigureService(tree1);
+            BMGridGear.SetVisualAttributes(tree1, BMGridGear.AttrSetType.Service);
 
             try
             {
-                BMUiGear.TreeFillData(tree1, data);
+                //BMUiGear.TreeFillData(tree1, data);
+                new BMGridGear(BMGridGear.AttrSetType.Service).AssignTable(tree1, data);
             }
             catch (Exception ex)
             {
-                BMUiCustomControls.UIException.Alert(ex.Message, "Ошибка приложения");
+                BMUiGear.Alert(ex.Message, "Ошибка приложения");
             }
         }
 
@@ -60,8 +63,8 @@ namespace BMPL
 
                         switch (int.Parse(dgvibc.Val.ToString()))
                         {
-                            case 1: BMUiGear.changeServiceStatus(tree1, 0); break;
-                            case 0: BMUiGear.changeServiceStatus(tree1, 1); break;
+                            case 1: BMUiGear.ManageService(tree1, 0); break;
+                            case 0: BMUiGear.ManageService(tree1, 1); break;
                         }
                     }
                 }
@@ -76,8 +79,8 @@ namespace BMPL
 
                         switch (int.Parse(dgvibc.Val.ToString()))
                         {
-                            case 1: BMUiGear.changeWTStatus(tree1, 0); break;
-                            case 0: BMUiGear.changeWTStatus(tree1, 1); break;
+                            case 1: BMUiGear.ManageWorkType(tree1, 0); break;
+                            case 0: BMUiGear.ManageWorkType(tree1, 1); break;
                         }
                     }
                 }

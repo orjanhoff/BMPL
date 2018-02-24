@@ -72,14 +72,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BMController.cs" />
+    <Compile Include="BMGridGear.cs" />
+    <Compile Include="BMSrvGear.cs" />
     <Compile Include="BMDaGear.cs" />
     <Compile Include="BMIOGear.cs" />
     <Compile Include="BMUiCache.cs" />
-    <Compile Include="BMUiConst.cs" />
+    <Compile Include="BMInitGear.cs" />
     <Compile Include="BMUiCustomControls.cs" />
     <Compile Include="BMUiDictionary.cs" />
     <Compile Include="BMUiGear.cs" />
+    <Compile Include="BMUserGear.cs" />
     <Compile Include="BM_api.cs">
       <SubType>Form</SubType>
     </Compile>

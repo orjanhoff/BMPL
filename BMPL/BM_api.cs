@@ -22,16 +22,16 @@ namespace BMPL
 
             propertiesToolStripMenuItem.MouseDown += new MouseEventHandler(propertiesToolStripMenuItem_MouseDown);
 
-            BMUiGear.DgvAlignCenterAndLeft(dgv1);
-            BMUiGear.DgvConfigureDictionary(dgv1);
+            BMGridGear.SetCellAlignment(dgv1, BMGridGear.CellAlign.CenterAndLeft);
+            BMGridGear.SetVisualAttributes(dgv1);
 
             try
             {
-                BMUiGear.DgvFillData(dgv1, data, 6, true);
+                new BMGridGear().AssignTable(dgv1, data, 6, true);
             }
             catch (Exception ex)
             {
-                BMUiCustomControls.UIException.Alert(ex.Message, "Ошибка приложения");
+                BMUiGear.Alert(ex.Message, "Ошибка приложения");
             }
         }
 

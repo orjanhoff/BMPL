@@ -25,16 +25,16 @@ namespace BMPL
 
             propertiesToolStripMenuItem.MouseDown += new MouseEventHandler(propertiesToolStripMenuItem_MouseDown);
 
-            BMUiGear.DgvAlignCenter(dgv1);
-            BMUiGear.DgvConfigureUser(dgv1);
+            BMGridGear.SetCellAlignment(dgv1);
+            BMGridGear.SetVisualAttributes(dgv1, BMGridGear.AttrSetType.User);
 
             try
             {
-                BMUiGear.DgvFillData(dgv1, data, "iuserid","susername", "suserfio", "iuserstatus", "iuserrole");
+                new BMGridGear(BMGridGear.AttrSetType.User).AssignTable(dgv1, data, 0, false, "iuserid", "susername", "suserfio", "iuserstatus", "iuserrole");
             }
             catch (Exception ex)
             {
-                BMUiCustomControls.UIException.Alert(ex.Message, "Ошибка приложения");
+                BMUiGear.Alert(ex.Message, "Ошибка приложения");
             }
         }
 
@@ -93,32 +93,27 @@ namespace BMPL
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            BMUiGear.changeUserStatus(dgv1,0);
+            BMUiGear.ManageUser(dgv1,0);
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            BMUiGear.changeUserStatus(dgv1, 1);
+            BMUiGear.ManageUser(dgv1, 1);
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            BMUiGear.changeUserRole(dgv1, 1);
+            BMUiGear.ManageUserRole(dgv1, 1);
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            BMUiGear.changeUserRole(dgv1, 2);
+            BMUiGear.ManageUserRole(dgv1, 2);
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            BMUiGear.changeUserRole(dgv1, 3);
-        }
-
-        private void cms1_Opening(object sender, CancelEventArgs e)
-        {
-
+            BMUiGear.ManageUserRole(dgv1, 3);
         }
     }
 }

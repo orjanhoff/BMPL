@@ -53,21 +53,6 @@ namespace BMPL
             public UIException() : base() { }
             public UIException(string message) : base(message) { }
             public UIException(string message, Exception inner) : base(message, inner) { }
-
-            public static void Alert(string err, string header)
-            {
-                MessageBox.Show(err, string.Format("[{0}]", header ?? "Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            public static void Warn(string msg, string header)
-            {
-                MessageBox.Show(msg, string.Format("[{0}]", header ?? "Information"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            public static void Inform(string msg, string header)
-            {
-                MessageBox.Show(msg, string.Format("[{0}]", header ?? "Information"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
     }
 }

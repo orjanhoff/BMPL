@@ -22,18 +22,18 @@ namespace BMPL
 
             propertiesToolStripMenuItem.MouseDown += new MouseEventHandler(propertiesToolStripMenuItem_MouseDown);
 
-            BMUiGear.DgvAlignCenter(dgv1);
-            BMUiGear.DgvConfigureDictionary(dgv1);
+            BMGridGear.SetCellAlignment(dgv1);
+            BMGridGear.SetVisualAttributes(dgv1);
 
             DataTable copyDataTable = (from DataRow row in data.Rows where row.Field<Int64>(2).Equals(1) select row).CopyToDataTable();
 
             try
             {
-                BMUiGear.DgvFillData(dgv1, copyDataTable, true, "stblname", "stbldesc");
+                new BMGridGear().AssignTable(dgv1, copyDataTable, 0, true, "stblname", "stbldesc");
             }
             catch (Exception ex)
             {
-                BMUiCustomControls.UIException.Alert(ex.Message, "Ошибка приложения");
+                BMUiGear.Alert(ex.Message, "Ошибка приложения");
             }
         }
 

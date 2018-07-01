@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace BMPL
 {
@@ -16,6 +8,7 @@ namespace BMPL
         public BM_main()
         {
             InitializeComponent();
+            Text = string.Format("{0} v.{1}", Text, typeof(BM_main).Assembly.GetName().Version);
 
             //this.MaximizeBox = false;
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -41,6 +34,12 @@ namespace BMPL
         {
             BM_api b_api = new BM_api(BMInitGear.UiConst.Cache["api"]);
             b_api.ShowDialog();
+        }
+
+        private void интеграцияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BM_MSMQ b_msmq = new BM_MSMQ();
+            b_msmq.ShowDialog();
         }
     }
 }

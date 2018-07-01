@@ -203,6 +203,16 @@ namespace BMPL.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap integration {
+            get {
+                object obj = ResourceManager.GetObject("integration", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap message {
             get {
                 object obj = ResourceManager.GetObject("message", resourceCulture);
@@ -233,9 +243,29 @@ namespace BMPL.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap off1 {
+            get {
+                object obj = ResourceManager.GetObject("off1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap on {
             get {
                 object obj = ResourceManager.GetObject("on", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap on1 {
+            get {
+                object obj = ResourceManager.GetObject("on1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -34,7 +34,22 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>newton.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="bmDTOProvider">
+      <HintPath>..\..\..\BMBH\BMBH\BMBH\bmDTOProvider\bmDTOProvider\bin\Debug\bmDTOProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="bmMSMQProvider">
+      <HintPath>..\..\..\BMBH\BMBH\BMBH\bmMSMQProvider\bmMSMQProvider\bin\Debug\bmMSMQProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="bmSessionProvider">
+      <HintPath>..\..\..\BMBH\BMBH\BMBH\bmSessionProvider\bmSessionProvider\bin\Debug\bmSessionProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="bmV4DaProvider">
+      <HintPath>..\..\..\BMBH\BMBH\BMBH\bmV4DaProvider\bmV4DaProvider\bin\Debug\bmV4DaProvider.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -45,6 +60,9 @@
     </Reference>
     <Reference Include="ExpandableGridView">
       <HintPath>..\..\..\..\TreeGridViewRebuilt\TreeGridview\TreeGridView\bin\Release\ExpandableGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="RBSPQueueProvider">
+      <HintPath>..\..\..\BMBH\BMBH\BMBH\RBSPQueueProvider\RBSPQueueProvider\bin\Debug\RBSPQueueProvider.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -61,6 +79,7 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.106.0\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,9 +91,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BMBHGear.cs" />
     <Compile Include="BMGridGear.cs" />
     <Compile Include="BMLoggingGear.cs" />
-    <Compile Include="BMQueueGear.cs" />
+    <Compile Include="BMMSMQGear.cs" />
+    <Compile Include="BMSessionGear.cs" />
     <Compile Include="BMSrvGear.cs" />
     <Compile Include="BMDaGear.cs" />
     <Compile Include="BMIOGear.cs" />
@@ -120,6 +141,12 @@
     <Compile Include="BM_user.Designer.cs">
       <DependentUpon>BM_user.cs</DependentUpon>
     </Compile>
+    <Compile Include="BM_MSMQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BM_MSMQ.Designer.cs">
+      <DependentUpon>BM_MSMQ.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BM_api.resx">
@@ -139,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BM_user.resx">
       <DependentUpon>BM_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BM_MSMQ.resx">
+      <DependentUpon>BM_MSMQ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -210,6 +240,10 @@
     <Content Include="data\bm_init_settings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="newton.ico" />
+    <None Include="Resources\integration.png" />
+    <None Include="Resources\on1.png" />
+    <None Include="Resources\off1.png" />
     <None Include="Resources\wtpower.png" />
     <None Include="Resources\checkno.png" />
     <None Include="Resources\checkok.png" />

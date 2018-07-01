@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BMechanic.bmSessionProvider;
+using BMechanic.V4Net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
@@ -93,6 +95,12 @@ namespace BMPL
             //Наполнение операционного кэша
             cache = new BMUiCache.Cache(new BMDaGear(Bm_path_db));
             cache.BuildCache();
+
+            //Инициализация операционных компонентов
+            string pathRODB = "K:/Projects/Бизнес Механика (Business Mechanics)/BMDL/bm/bm.rodb.vdb";
+
+            //Инициализация DA-провайдера
+            bmVDaProvider.DaProvider.InitDataBase(pathRODB);
         }
 
         public BMUiCache.Cache Cache

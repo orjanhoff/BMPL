@@ -1,10 +1,7 @@
 ﻿using AdvancedDataGridView;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BMPL
@@ -65,7 +62,7 @@ namespace BMPL
         }
 
         //3. Установка атрибутов отображения
-        public static void SetVisualAttributes (DataGridView dgv, AttrSetType ast= AttrSetType.Dictionary)
+        public static void SetVisualAttributes (DataGridView dgv, AttrSetType ast = AttrSetType.Dictionary)
         {
             int i = (int)ast;
 

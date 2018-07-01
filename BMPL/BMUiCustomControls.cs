@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace BMPL
@@ -44,6 +45,19 @@ namespace BMPL
             {
                 base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
                 graphics.DrawImage(icon, cellBounds);
+            }
+        }
+
+        public class RoundButton : Button
+        {
+            protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+            {
+                GraphicsPath grPath = new GraphicsPath();
+                grPath.AddEllipse(0, 0, ClientSize.Width, ClientSize.Height);
+                Region = new Region(grPath);
+                Height = 30;
+                Width = 30;
+                base.OnPaint(e);
             }
         }
 

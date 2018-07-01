@@ -43,6 +43,7 @@
             this.пользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.реестрAPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.интеграцияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.руководствоПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,7 +130,8 @@
             this.шаблоныСообщенийToolStripMenuItem,
             this.пользователяToolStripMenuItem,
             this.реестрAPIToolStripMenuItem,
-            this.отчетыToolStripMenuItem});
+            this.отчетыToolStripMenuItem,
+            this.интеграцияToolStripMenuItem});
             this.обновлениеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("обновлениеToolStripMenuItem.Image")));
             this.обновлениеToolStripMenuItem.Name = "обновлениеToolStripMenuItem";
             this.обновлениеToolStripMenuItem.Size = new System.Drawing.Size(151, 24);
@@ -172,6 +174,14 @@
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
+            // 
+            // интеграцияToolStripMenuItem
+            // 
+            this.интеграцияToolStripMenuItem.Image = global::BMPL.Properties.Resources.integration;
+            this.интеграцияToolStripMenuItem.Name = "интеграцияToolStripMenuItem";
+            this.интеграцияToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.интеграцияToolStripMenuItem.Text = "Интеграция";
+            this.интеграцияToolStripMenuItem.Click += new System.EventHandler(this.интеграцияToolStripMenuItem_Click);
             // 
             // справкаToolStripMenuItem
             // 
@@ -237,6 +247,7 @@
         private System.Windows.Forms.ToolStripMenuItem реестрAPIToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem свернутьВТрейToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem интеграцияToolStripMenuItem;
     }
 }
 

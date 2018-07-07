@@ -1,6 +1,6 @@
-﻿namespace BMPL
+﻿namespace BMApp
 {
-    partial class BM_user
+    partial class UserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BM_user));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.dgv1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cms1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -236,28 +236,28 @@
             // 
             // propertiesToolStripMenuItem
             // 
-            this.propertiesToolStripMenuItem.Image = global::BMPL.Properties.Resources.gear;
+            this.propertiesToolStripMenuItem.Image = global::BMApp.Properties.Resources.gear;
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
             this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(32, 24);
             this.propertiesToolStripMenuItem.ToolTipText = "Конфигурация";
             // 
             // tsmi1
             // 
-            this.tsmi1.Image = global::BMPL.Properties.Resources.minus;
+            this.tsmi1.Image = global::BMApp.Properties.Resources.minus;
             this.tsmi1.Name = "tsmi1";
             this.tsmi1.Size = new System.Drawing.Size(181, 26);
             this.tsmi1.Text = "Удалить";
             // 
             // tsmi2
             // 
-            this.tsmi2.Image = global::BMPL.Properties.Resources.plus;
+            this.tsmi2.Image = global::BMApp.Properties.Resources.plus;
             this.tsmi2.Name = "tsmi2";
             this.tsmi2.Size = new System.Drawing.Size(181, 26);
             this.tsmi2.Text = "Добавить";
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.Image = global::BMPL.Properties.Resources._lock;
+            this.toolStripMenuItem1.Image = global::BMApp.Properties.Resources._lock;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(197, 26);
             this.toolStripMenuItem1.Text = "Заблокировать";
@@ -265,7 +265,7 @@
             // 
             // toolStripMenuItem2
             // 
-            this.toolStripMenuItem2.Image = global::BMPL.Properties.Resources.unlock;
+            this.toolStripMenuItem2.Image = global::BMApp.Properties.Resources.unlock;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(197, 26);
             this.toolStripMenuItem2.Text = "Разблокировать";
@@ -273,7 +273,7 @@
             // 
             // toolStripMenuItem3
             // 
-            this.toolStripMenuItem3.Image = global::BMPL.Properties.Resources._operator;
+            this.toolStripMenuItem3.Image = global::BMApp.Properties.Resources._operator;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(194, 26);
             this.toolStripMenuItem3.Text = "Оператор";
@@ -281,7 +281,7 @@
             // 
             // toolStripMenuItem4
             // 
-            this.toolStripMenuItem4.Image = global::BMPL.Properties.Resources.auditor;
+            this.toolStripMenuItem4.Image = global::BMApp.Properties.Resources.auditor;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(194, 26);
             this.toolStripMenuItem4.Text = "Контроллер";
@@ -289,7 +289,7 @@
             // 
             // toolStripMenuItem5
             // 
-            this.toolStripMenuItem5.Image = global::BMPL.Properties.Resources.admin;
+            this.toolStripMenuItem5.Image = global::BMApp.Properties.Resources.admin;
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(194, 26);
             this.toolStripMenuItem5.Text = "Администратор";

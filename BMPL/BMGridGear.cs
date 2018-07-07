@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BMPL
+namespace BMApp
 {
     //dgv-DataGridView; tgv-TreeGridView;
 
@@ -202,7 +202,7 @@ namespace BMPL
                     //Добавление типов инициализации запуска сервиса
                     DataTable cdata =
                                         (
-                                            from DataRow rowwt in BMInitGear.UiConst.Cache["service_work_type"].Rows
+                                            from DataRow rowwt in BMHeartBeat.Cache["service_work_type"].Rows
                                             where rowwt.Field<Int64>("isrvid").Equals(row["isrvid"])
                                             select rowwt
                                         ).CopyToDataTable();

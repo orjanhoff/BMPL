@@ -2,7 +2,7 @@
 <init>
   <section name="init">
     <setting name="initial_database" value="bod.bmds.db" comment="Конфигурационная база данных" />
-    <setting name="operational_database" value="bod.bmds.oper.db" comment="Операционная база данных" />
+    <setting name="operational_database" value="bm.rodb.vdb" comment="Операционная база данных" />
     <setting name="sys_table" value="sys_table" comment="Наименование системной таблицы" />
     <setting name="log_file" value="bm_dd.mm.gggg_operations.log" comment="Наименование лог-файла" />
   </section>

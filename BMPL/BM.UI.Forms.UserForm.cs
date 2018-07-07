@@ -3,13 +3,13 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace BMPL
+namespace BMApp
 {
-    public partial class BM_user : Form
+    public partial class UserForm : Form
     {
         BMDaGear bm_da_gear = new BMDaGear();
 
-        public BM_user(DataTable data)
+        public UserForm(DataTable data)
         {
             InitializeComponent();
 

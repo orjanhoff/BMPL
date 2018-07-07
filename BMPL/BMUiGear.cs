@@ -1,10 +1,10 @@
 ﻿using AdvancedDataGridView;
-using BMPL.Properties;
+using BMApp.Properties;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace BMPL
+namespace BMApp
 {
     class BMUiGear
     {

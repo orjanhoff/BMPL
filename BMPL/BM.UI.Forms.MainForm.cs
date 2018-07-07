@@ -1,45 +1,50 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace BMPL
+namespace BMApp
 {
-    public partial class BM_main : Form
+    public partial class MainForm : Form
     {
-        public BM_main()
+        public MainForm()
         {
             InitializeComponent();
-            Text = string.Format("{0} v.{1}", Text, typeof(BM_main).Assembly.GetName().Version);
+            Text = string.Format("{0} v.{1}", Text, typeof(MainForm).Assembly.GetName().Version);
 
             //this.MaximizeBox = false;
             FormBorderStyle = FormBorderStyle.Fixed3D;
 
-            BM_service bm_service = new BM_service(BMInitGear.UiConst.Cache["service"]);
+            ServiceForm bm_service = new ServiceForm(BMHeartBeat.Cache["service"]);
             bm_service.MdiParent = this;
             bm_service.Show();
         }
 
         private void словариToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BM_dictionary b_dictionary = new BM_dictionary(BMInitGear.UiConst.Cache["sys_table"]);
+            DictionaryForm b_dictionary = new DictionaryForm(BMHeartBeat.Cache["sys_table"]);
             b_dictionary.ShowDialog();
         }
 
         private void пользователиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BM_user b_user = new BM_user(BMInitGear.UiConst.Cache["user"]);
+            UserForm b_user = new UserForm(BMHeartBeat.Cache["user"]);
             b_user.ShowDialog();
         }
 
         private void реестрAPIToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BM_api b_api = new BM_api(BMInitGear.UiConst.Cache["api"]);
+            ApiForm b_api = new ApiForm(BMHeartBeat.Cache["api"]);
             b_api.ShowDialog();
         }
 
         private void интеграцияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BM_MSMQ b_msmq = new BM_MSMQ();
+            IntegrationForm b_msmq = new IntegrationForm();
             b_msmq.ShowDialog();
+        }
+
+        private void отчетыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace BMPL
+namespace BMApp
 {
     static class Program
     {
@@ -16,10 +16,21 @@ namespace BMPL
                 switch (BMInitGear.UiConst.Equals(null))
                 {
                     case true:
-                        BMUiGear.Alert("{0}: Ошибка при построении кэша", "Ошибка приложения");
+                        BMUiGear.Alert("{0}: Ошибка первичной инициализации параметров", "Ошибка приложения");
                         break;
                     default: break;
                 }
+            }
+            catch (Exception ex)
+            {
+                BMUiGear.Alert("{0}: Ошибка при инициализации: " + ex, "Ошибка приложения");
+                return;
+            }
+
+            try
+            {
+                BMHeartBeat bmHB = new BMHeartBeat();
+                bmHB.Init();
             }
             catch (Exception ex)
             {
@@ -32,7 +43,7 @@ namespace BMPL
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BM_main());
+            Application.Run(new MainForm());
         }
     }
 }

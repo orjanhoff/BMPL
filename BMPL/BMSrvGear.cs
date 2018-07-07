@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace BMPL
+namespace BMApp
 {
     class BMSrvGear
     {
@@ -12,26 +13,26 @@ namespace BMPL
         public static void ManageService (string srvid, string status)
         {
                 //1. Обработка сущности в статической БД
-                new BMDaGear().ExecuteQuery(string.Format("update service set isrvstatus={0} where isrvid={1}", status, srvid));
+                BMHeartBeat.DbProvider.ExecuteQuery(string.Format("update service set isrvstatus={0} where isrvid={1}", status, srvid));
 
                 //2. Обработка сущности в операционном кэше
-                BMInitGear.UiConst.Cache["service"].Select("isrvid=" + srvid).First()["isrvstatus"] = status;
+                BMHeartBeat.Cache["service"].Select("isrvid=" + srvid).First()["isrvstatus"] = status;
         }
 
         //Управление обработчиком сервиса
         public static void ManageWorkType(string srvid, string status, string swtype)
         {
             //1. Обработка сущности в статической БД
-            new BMDaGear().ExecuteQuery(string.Format("update service_work_type set iwtstatus=={0} where isrvid={1} and isrvworktype={2}", status, srvid,swtype));
+            BMHeartBeat.DbProvider.ExecuteQuery(string.Format("update service_work_type set iwtstatus=={0} where isrvid={1} and isrvworktype={2}", status, srvid,swtype));
 
             //2. Обработка сущности в операционном кэше
-            BMInitGear.UiConst.Cache["service_work_type"].Select(string.Format("isrvid={0} and isrvworktype={1}", srvid, swtype)).First()["iwtstatus"] = status;
+            BMHeartBeat.Cache["service_work_type"].Select(string.Format("isrvid={0} and isrvworktype={1}", srvid, swtype)).First()["iwtstatus"] = status;
         }
 
         //Получение статуса сервиса
         public static bool IsServiceOn (string srvid)
         {
-            var st = BMInitGear.UiConst.Cache["service"].Select("isrvid=" + srvid).First()["isrvstatus"].ToString();
+            var st = BMHeartBeat.Cache["service"].Select("isrvid=" + srvid).First()["isrvstatus"].ToString();
 
             switch (st.Equals("1"))
             {
@@ -45,7 +46,7 @@ namespace BMPL
         {
             try
             {
-                var st = BMInitGear.UiConst.Cache["service_work_type"].Select(string.Format("isrvid={0} and isrvworktype={1}", srvid, ((int)swtype).ToString())).First()["iwtstatus"].ToString();
+                var st = BMHeartBeat.Cache["service_work_type"].Select(string.Format("isrvid={0} and isrvworktype={1}", srvid, ((int)swtype).ToString())).First()["iwtstatus"].ToString();
 
                 switch (st.Equals("1"))
                 {
@@ -58,6 +59,5 @@ namespace BMPL
                 return false;
             }
         }
-
     }
 }

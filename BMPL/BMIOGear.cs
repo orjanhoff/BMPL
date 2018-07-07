@@ -2,7 +2,7 @@
 using System.Data;
 using System.Diagnostics;
 
-namespace BMPL
+namespace BMApp
 {
     class BMIOGear
     {

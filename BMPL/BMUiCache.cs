@@ -2,7 +2,7 @@
 using System.Data;
 using System.Linq;
 
-namespace BMPL
+namespace BMApp
 {
     class BMUiCache
     {

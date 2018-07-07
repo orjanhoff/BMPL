@@ -1,4 +1,4 @@
-﻿namespace BMPL
+﻿namespace BMApp
 {
     class BMUiDictionary
     {

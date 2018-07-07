@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace BMPL
+namespace BMApp
 {
-    public partial class BM_api : Form
+    public partial class ContentForm : Form
     {
-        public BM_api(DataTable data)
+        public ContentForm(params string[] data)
         {
             InitializeComponent();
 
@@ -17,12 +16,20 @@ namespace BMPL
 
             propertiesToolStripMenuItem.MouseDown += new MouseEventHandler(propertiesToolStripMenuItem_MouseDown);
 
+            switch (data.Length)
+            {
+                case 2: Text = data[1] ?? data[0]; break;
+                case 1: Text = data[0]; break;
+                case 0: BMUiGear.Alert("{0}: Не задан справочник", "Ошибка приложения");
+                    return;
+            }
+
             BMGridGear.SetCellAlignment(dgv1, BMGridGear.CellAlign.CenterAndLeft);
             BMGridGear.SetVisualAttributes(dgv1);
 
             try
             {
-                new BMGridGear().AssignTable(dgv1, data, 6, true);
+                new BMGridGear().AssignTable(dgv1, BMHeartBeat.Cache[data[0]], 0, false, "ierrcode", "serrmsg");
             }
             catch (Exception ex)
             {
@@ -30,20 +37,9 @@ namespace BMPL
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var senderGrid = (DataGridView)sender;
-            string table = dgv1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            string description = dgv1.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-            {
-                if (e.ColumnIndex == senderGrid.ColumnCount - 1)
-                {
-                    BM_dictionary_data b_dictionary_data = new BM_dictionary_data(table, description);
-                    b_dictionary_data.ShowDialog();
-                }
-            }
         }
 
         private void propertiesToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)

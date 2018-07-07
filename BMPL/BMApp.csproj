@@ -7,19 +7,34 @@
     <ProjectGuid>{EF8B1F83-60B4-4A5F-B72C-28039B973B59}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BMPL</RootNamespace>
-    <AssemblyName>BMPL</AssemblyName>
+    <RootNamespace>BMApp</RootNamespace>
+    <AssemblyName>BMApp</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -50,22 +65,10 @@
     <Reference Include="bmV4DaProvider">
       <HintPath>..\..\..\BMBH\BMBH\BMBH\bmV4DaProvider\bmV4DaProvider\bin\Debug\bmV4DaProvider.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="ExpandableGridView">
       <HintPath>..\..\..\..\TreeGridViewRebuilt\TreeGridview\TreeGridView\bin\Release\ExpandableGridView.dll</HintPath>
     </Reference>
-    <Reference Include="RBSPQueueProvider">
-      <HintPath>..\..\..\BMBH\BMBH\BMBH\RBSPQueueProvider\RBSPQueueProvider\bin\Debug\RBSPQueueProvider.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.106.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.106.0\lib\net451\System.Data.SQLite.dll</HintPath>
@@ -82,20 +85,19 @@
     <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BMBHGear.cs" />
+    <Compile Include="BMBioEngine.cs" />
+    <Compile Include="BMHeartBeat.cs" />
     <Compile Include="BMGridGear.cs" />
+    <Compile Include="BMJournal.cs" />
     <Compile Include="BMLoggingGear.cs" />
     <Compile Include="BMMSMQGear.cs" />
-    <Compile Include="BMSessionGear.cs" />
     <Compile Include="BMSrvGear.cs" />
     <Compile Include="BMDaGear.cs" />
     <Compile Include="BMIOGear.cs" />
@@ -105,76 +107,91 @@
     <Compile Include="BMUiDictionary.cs" />
     <Compile Include="BMUiGear.cs" />
     <Compile Include="BMUserGear.cs" />
-    <Compile Include="BM_api.cs">
+    <Compile Include="BM.UI.Forms.ApiForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BM_api.Designer.cs">
-      <DependentUpon>BM_api.cs</DependentUpon>
+    <Compile Include="BM.UI.Forms.ApiForm.Designer.cs">
+      <DependentUpon>BM.UI.Forms.ApiForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BM_dictionary.cs">
+    <Compile Include="BM.UI.Forms.DictionaryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BM_dictionary.Designer.cs">
-      <DependentUpon>BM_dictionary.cs</DependentUpon>
+    <Compile Include="BM.UI.Forms.DictionaryForm.Designer.cs">
+      <DependentUpon>BM.UI.Forms.DictionaryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BM_dictionary_data.cs">
+    <Compile Include="BM.UI.Forms.Dictionary.ContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BM_dictionary_data.Designer.cs">
-      <DependentUpon>BM_dictionary_data.cs</DependentUpon>
+    <Compile Include="BM.UI.Forms.Dictionary.ContentForm.Designer.cs">
+      <DependentUpon>BM.UI.Forms.Dictionary.ContentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BM_main.cs">
+    <Compile Include="BM.UI.Forms.MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BM_main.Designer.cs">
-      <DependentUpon>BM_main.cs</DependentUpon>
+    <Compile Include="BM.UI.Forms.MainForm.Designer.cs">
+      <DependentUpon>BM.UI.Forms.MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BM_service.cs">
+    <Compile Include="BM.UI.Forms.ServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BM_service.Designer.cs">
-      <DependentUpon>BM_service.cs</DependentUpon>
+    <Compile Include="BM.UI.Forms.ServiceForm.Designer.cs">
+      <DependentUpon>BM.UI.Forms.ServiceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BM_user.cs">
+    <Compile Include="BM.UI.Forms.UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BM_user.Designer.cs">
-      <DependentUpon>BM_user.cs</DependentUpon>
+    <Compile Include="BM.UI.Forms.UserForm.Designer.cs">
+      <DependentUpon>BM.UI.Forms.UserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BM_MSMQ.cs">
+    <Compile Include="BM.UI.Forms.IntegationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BM_MSMQ.Designer.cs">
-      <DependentUpon>BM_MSMQ.cs</DependentUpon>
+    <Compile Include="BM.UI.Forms.IntegationForm.Designer.cs">
+      <DependentUpon>BM.UI.Forms.IntegationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BM_api.resx">
-      <DependentUpon>BM_api.cs</DependentUpon>
+    <EmbeddedResource Include="BM.UI.Forms.ApiForm.resx">
+      <DependentUpon>BM.UI.Forms.ApiForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BM_dictionary.resx">
-      <DependentUpon>BM_dictionary.cs</DependentUpon>
+    <EmbeddedResource Include="BM.UI.Forms.DictionaryForm.resx">
+      <DependentUpon>BM.UI.Forms.DictionaryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BM_dictionary_data.resx">
-      <DependentUpon>BM_dictionary_data.cs</DependentUpon>
+    <EmbeddedResource Include="BM.UI.Forms.Dictionary.ContentForm.resx">
+      <DependentUpon>BM.UI.Forms.Dictionary.ContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BM_main.resx">
-      <DependentUpon>BM_main.cs</DependentUpon>
+    <EmbeddedResource Include="BM.UI.Forms.MainForm.resx">
+      <DependentUpon>BM.UI.Forms.MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BM_service.resx">
-      <DependentUpon>BM_service.cs</DependentUpon>
+    <EmbeddedResource Include="BM.UI.Forms.ServiceForm.resx">
+      <DependentUpon>BM.UI.Forms.ServiceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BM_user.resx">
-      <DependentUpon>BM_user.cs</DependentUpon>
+    <EmbeddedResource Include="BM.UI.Forms.UserForm.resx">
+      <DependentUpon>BM.UI.Forms.UserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BM_MSMQ.resx">
-      <DependentUpon>BM_MSMQ.cs</DependentUpon>
+    <EmbeddedResource Include="BM.UI.Forms.IntegationForm.resx">
+      <DependentUpon>BM.UI.Forms.IntegationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="data\bm.rodb.blb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\bm.rodb.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\bm.rodb.ind">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\bm.rodb.vdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\bm.rodb.vdb.journal">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="data\bod.bmds.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -266,6 +283,18 @@
     <None Include="Resources\plus.png" />
     <None Include="Resources\view.png" />
     <None Include="Resources\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.106.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.106.0\build\net451\System.Data.SQLite.Core.targets')" />

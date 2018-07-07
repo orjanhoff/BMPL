@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 
-namespace BMPL
+namespace BMApp
 {
     class BMInitGear
     {
         private static BMInitGear initGear;
-        private static BMUiCache.Cache cache;
         private static Dictionary<string, string> init;
         private static string init_c_db, init_o_db, init_sys_table, init_log;
 
@@ -31,12 +30,12 @@ namespace BMPL
             { return init_sys_table; }
         }
 
-        public static string Bm_path_db
+        public static string Bm_path_cdb
         { get
             { return init_c_db; }
         }
 
-        public static string Bm_path_nosql
+        public static string Bm_path_odb
         { get
             { return init_o_db; }
         }
@@ -91,24 +90,6 @@ namespace BMPL
             init_c_db = Path.Combine(bm_app_path, bm_folder_data, init["initial_database"]);
             init_o_db = Path.Combine(bm_app_path, bm_folder_data, init["operational_database"]);
             init_sys_table = init["sys_table"];
-
-            //Наполнение операционного кэша
-            cache = new BMUiCache.Cache(new BMDaGear(Bm_path_db));
-            cache.BuildCache();
-
-            //Инициализация операционных компонентов
-            string pathRODB = "K:/Projects/Бизнес Механика (Business Mechanics)/BMDL/bm/bm.rodb.vdb";
-
-            //Инициализация DA-провайдера
-            bmVDaProvider.DaProvider.InitDataBase(pathRODB);
-        }
-
-        public BMUiCache.Cache Cache
-        {
-            get
-            {
-                return cache;
-            }
         }
     }
 }

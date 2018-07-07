@@ -1,9 +1,11 @@
-﻿using System;
-using System.Messaging;
+﻿using System.Messaging;
 using BMechanic.bmDTOProvider;
-using BMechanic.bmMSMQProvider;
+using System.Data;
+using System.Linq;
+using System;
+using System.Collections.Generic;
 
-namespace BMPL
+namespace BMApp
 {
     class BMBHGear
     {
@@ -20,43 +22,111 @@ namespace BMPL
         public static void MessageHandler(object message)
         {
             Message request = message as Message;
-            Console.WriteLine(request.Label);
+            string response;
 
+            //I.Запрос на авторизацию
             if (bmMessageType.AUTHORIZATION.Equals((bmMessageType)int.Parse(request.Label)))
+            {
+                if (handleAuthorization(request, out response))
+                {
+                    sendResponse(request.Id, response);
+                }
+            }
+            //II. Запрос на исполнение команды
+            else if (bmMessageType.EXECUTECMD.Equals((bmMessageType)int.Parse(request.Label)))
+            {
+
+            }
+        }
+
+        private static void sendResponse(string CorellId, string xmlRs)
+        {
+            Message response = new Message(xmlRs);
+            response.CorrelationId = CorellId;
+
+            //Отправка уведомления
+            BMMSMQGear.getInstance.Notify(response);
+        }
+
+        private static bool handleAuthorization(Message request, out string xmlRs)
+        {
+            //Формирование шаблона ответа
+            bmAccessInfoDTO aInfo = new bmAccessInfoDTO();
+
+            try
             {
                 //Создание DTO bmUserDTO
                 bmUserDTO User = bmUserDTO.Deserialize(request.Body.ToString());
-                Console.WriteLine("UserName: " + User.Username);
+
+                //Валидация пользовательских данных
+                string userid;
+
+                if (!BMUserGear.GetUserId(User.Username, out userid))
+                {
+                    aInfo.State = 101;
+                    aInfo.Accessmessage = string.Format("Ошибка авторизации: Пользователь {0} не зарегистрирован", User.Username);
+
+                    xmlRs= bmAccessInfoDTO.Serialize(aInfo);
+                    return true;
+                }
+
+                if (!BMUserGear.IsUserOn(userid))
+                {
+                    aInfo.State = 102;
+                    aInfo.Accessmessage = "Ошибка авторизации: Пользователь заблокирован";
+
+                    xmlRs = bmAccessInfoDTO.Serialize(aInfo);
+                    return true;
+                }
+
+                //Обогащение DTO
+                User.Id = int.Parse(userid);
+                User.Role = (int)BMUserGear.GetUserRole(userid);
+
+                //Сбор доступного функционала
+                DataRow[] services = BMHeartBeat.Cache["service_work_type"].Select("isrvworktype=1 and iwtstatus=1");
+
+                if (services.Length.Equals(0))
+                {
+                    aInfo.State = 103;
+                    aInfo.Accessmessage = "Нет доступных команд";
+
+                    xmlRs = bmAccessInfoDTO.Serialize(aInfo);
+                    return true;
+                }
+
+                aInfo.Commands = new bmCommands();
+                aInfo.Commands.CommandsList = new List<bmCommand>();
+
+                foreach (DataRow crow in services)
+                {
+                    bmCommand bmC = new bmCommand();
+
+                    bmC.Id = int.Parse(crow["isrvid"].ToString());
+                    bmC.Name = BMHeartBeat.Cache["service"].Select("isrvid=" + @crow["isrvid"]).First()["ssrvname"].ToString();
+                    bmC.Description = BMHeartBeat.Cache["service"].Select("isrvid=" + @crow["isrvid"]).First()["ssrvdescription"].ToString();
+
+                    aInfo.Commands.CommandsList.Add(bmC);
+                }
 
                 //Создание сессии пользователя
-                var cGuid = BMSessionGear.SessionProvider.CreateSession(User);
-
-                Console.WriteLine(cGuid);
-                Console.WriteLine(BMSessionGear.SessionProvider.CheckSessionByGuid(cGuid));
-
-                //Формирование ответа
-                bmAccessInfoDTO aInfo = new bmAccessInfoDTO();
+                var session = BMHeartBeat.SessionProvider.CreateSession(User);
 
                 //Данные сессии
-                aInfo.Session = new bmSessionInfo();
-                aInfo.Session.Sessionid = BMSessionGear.SessionProvider.GetSession(cGuid).SessionGuid;
-                aInfo.Session.Userrole = BMSessionGear.SessionProvider.GetSession(cGuid).UserRole;
-                aInfo.Session.Begin = BMSessionGear.SessionProvider.GetSession(cGuid).Begin;
-                aInfo.Session.Expiration = BMSessionGear.SessionProvider.GetSession(cGuid).Expiration;
+                aInfo.Session = session;
 
-                //Доступные команды
-                aInfo.State = -100;
-                aInfo.Accessmessage = "Нет доступных команд";
+                //Успешный статус
+                aInfo.State = 0;
 
-                string msg = bmAccessInfoDTO.Serialize(aInfo);
-
-                Message response = new Message(msg);
-                response.CorrelationId = request.Id;
-
-                //Инициализация Синхронного адаптера
-                bmSyncMSMQAdapter mqCLient = new bmSyncMSMQAdapter(@".\Private$\BM.MAIN.OUT");
-                mqCLient.NotifyCall(response);
+                xmlRs = bmAccessInfoDTO.Serialize(aInfo);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                xmlRs = ex.Message;
+                return false;
             }
         }
     }
 }
+

@@ -1,6 +1,6 @@
-﻿namespace BMPL
+﻿namespace BMApp
 {
-    partial class BM_service
+    partial class ServiceForm
     {
         /// <summary>
         /// Required designer variable.

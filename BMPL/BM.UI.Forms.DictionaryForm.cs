@@ -4,11 +4,11 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BMPL
+namespace BMApp
 {
-    public partial class BM_dictionary : Form
+    public partial class DictionaryForm : Form
     {
-        public BM_dictionary(DataTable data)
+        public DictionaryForm(DataTable data)
         {
             InitializeComponent();
 
@@ -43,7 +43,7 @@ namespace BMPL
             {
               if (e.ColumnIndex == senderGrid.ColumnCount-1)
                 {
-                    BM_dictionary_data b_dictionary_data = new BM_dictionary_data(table, description);
+                    ContentForm b_dictionary_data = new ContentForm(table, description);
                     b_dictionary_data.ShowDialog();
                 }
             }

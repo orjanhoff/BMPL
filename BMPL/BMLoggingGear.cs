@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace BMPL
+namespace BMApp
 {
     class BMLoggingGear
     {

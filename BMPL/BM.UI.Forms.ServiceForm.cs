@@ -1,17 +1,17 @@
 ﻿using AdvancedDataGridView;
-using BMPL.Properties;
+using BMApp.Properties;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace BMPL
+namespace BMApp
 {
-    public partial class BM_service : Form
+    public partial class ServiceForm : Form
     {
-        BMLoggingGear logger = new BMLoggingGear(typeof(BM_service), BMInitGear.Bm_path_log);
+        BMLoggingGear logger = new BMLoggingGear(typeof(ServiceForm), BMInitGear.Bm_path_log);
 
-        public BM_service(DataTable data)
+        public ServiceForm(DataTable data)
         {
             logger.Trace("Панель управления сервисами: инициализация");
             InitializeComponent();

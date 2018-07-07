@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SQLite;
 
-namespace BMPL
+namespace BMApp
 {
     class BMDaGear
     {
@@ -22,7 +22,7 @@ namespace BMPL
 
         public BMDaGear()
         {
-            this.db_url = string.Format("Data Source={0};Version=3;New=False;Compress=True;", BMInitGear.Bm_path_db);
+            this.db_url = string.Format("Data Source={0};Version=3;New=False;Compress=True;", BMInitGear.Bm_path_cdb);
         }
 
         private void SetConnection()

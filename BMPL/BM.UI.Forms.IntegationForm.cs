@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace BMPL
+namespace BMApp
 {
-    public partial class BM_MSMQ : Form
+    public partial class IntegrationForm : Form
     {
-        public BM_MSMQ()
+        public IntegrationForm()
         {
             InitializeComponent();
             SetCellAlignment();

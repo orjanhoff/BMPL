@@ -1,6 +1,6 @@
-﻿namespace BMPL
+﻿namespace BMApp
 {
-    partial class BM_api
+    partial class ApiForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BM_api));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApiForm));
             this.cms1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmi1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,14 +62,14 @@
             // 
             // tsmi1
             // 
-            this.tsmi1.Image = global::BMPL.Properties.Resources.minus;
+            this.tsmi1.Image = global::BMApp.Properties.Resources.minus;
             this.tsmi1.Name = "tsmi1";
             this.tsmi1.Size = new System.Drawing.Size(151, 26);
             this.tsmi1.Text = "Удалить";
             // 
             // tsmi2
             // 
-            this.tsmi2.Image = global::BMPL.Properties.Resources.plus;
+            this.tsmi2.Image = global::BMApp.Properties.Resources.plus;
             this.tsmi2.Name = "tsmi2";
             this.tsmi2.Size = new System.Drawing.Size(151, 26);
             this.tsmi2.Text = "Добавить";
@@ -90,7 +90,7 @@
             // 
             // propertiesToolStripMenuItem
             // 
-            this.propertiesToolStripMenuItem.Image = global::BMPL.Properties.Resources.gear;
+            this.propertiesToolStripMenuItem.Image = global::BMApp.Properties.Resources.gear;
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
             this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(32, 24);
             this.propertiesToolStripMenuItem.ToolTipText = "Конфигурация";
@@ -101,8 +101,8 @@
             this.dgv1.AllowUserToDeleteRows = false;
             this.dgv1.AllowUserToResizeColumns = false;
             this.dgv1.AllowUserToResizeRows = false;
-            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv1.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

@@ -1,6 +1,6 @@
-﻿namespace BMPL
+﻿namespace BMApp
 {
-    partial class BM_MSMQ
+    partial class IntegrationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BM_MSMQ));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IntegrationForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,14 +62,14 @@
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.Image = global::BMPL.Properties.Resources.off1;
+            this.toolStripMenuItem1.Image = global::BMApp.Properties.Resources.off1;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(32, 24);
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
-            this.toolStripMenuItem2.Image = global::BMPL.Properties.Resources.on1;
+            this.toolStripMenuItem2.Image = global::BMApp.Properties.Resources.on1;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(32, 24);
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);

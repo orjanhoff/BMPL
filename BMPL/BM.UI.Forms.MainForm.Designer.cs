@@ -1,6 +1,6 @@
-﻿namespace BMPL
+﻿namespace BMApp
 {
-    partial class BM_main
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BM_main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.свернутьВТрейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,14 +79,14 @@
             // 
             // свернутьВТрейToolStripMenuItem
             // 
-            this.свернутьВТрейToolStripMenuItem.Image = global::BMPL.Properties.Resources.tray;
+            this.свернутьВТрейToolStripMenuItem.Image = global::BMApp.Properties.Resources.tray;
             this.свернутьВТрейToolStripMenuItem.Name = "свернутьВТрейToolStripMenuItem";
             this.свернутьВТрейToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.свернутьВТрейToolStripMenuItem.Text = "Свернуть в трей";
             // 
             // выходToolStripMenuItem
             // 
-            this.выходToolStripMenuItem.Image = global::BMPL.Properties.Resources.power;
+            this.выходToolStripMenuItem.Image = global::BMApp.Properties.Resources.power;
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.выходToolStripMenuItem.Text = "Выход";
@@ -111,14 +111,14 @@
             // 
             // подключитьсяКСерверуToolStripMenuItem
             // 
-            this.подключитьсяКСерверуToolStripMenuItem.Image = global::BMPL.Properties.Resources.import;
+            this.подключитьсяКСерверуToolStripMenuItem.Image = global::BMApp.Properties.Resources.import;
             this.подключитьсяКСерверуToolStripMenuItem.Name = "подключитьсяКСерверуToolStripMenuItem";
             this.подключитьсяКСерверуToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
             this.подключитьсяКСерверуToolStripMenuItem.Text = "Обновления";
             // 
             // отключитьсяОтСервераToolStripMenuItem
             // 
-            this.отключитьсяОтСервераToolStripMenuItem.Image = global::BMPL.Properties.Resources.console;
+            this.отключитьсяОтСервераToolStripMenuItem.Image = global::BMApp.Properties.Resources.console;
             this.отключитьсяОтСервераToolStripMenuItem.Name = "отключитьсяОтСервераToolStripMenuItem";
             this.отключитьсяОтСервераToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
             this.отключитьсяОтСервераToolStripMenuItem.Text = "Консоль";
@@ -139,7 +139,7 @@
             // 
             // словариToolStripMenuItem
             // 
-            this.словариToolStripMenuItem.Image = global::BMPL.Properties.Resources.dictionary;
+            this.словариToolStripMenuItem.Image = global::BMApp.Properties.Resources.dictionary;
             this.словариToolStripMenuItem.Name = "словариToolStripMenuItem";
             this.словариToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.словариToolStripMenuItem.Text = "Справочники";
@@ -147,14 +147,14 @@
             // 
             // шаблоныСообщенийToolStripMenuItem
             // 
-            this.шаблоныСообщенийToolStripMenuItem.Image = global::BMPL.Properties.Resources.message;
+            this.шаблоныСообщенийToolStripMenuItem.Image = global::BMApp.Properties.Resources.message;
             this.шаблоныСообщенийToolStripMenuItem.Name = "шаблоныСообщенийToolStripMenuItem";
             this.шаблоныСообщенийToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.шаблоныСообщенийToolStripMenuItem.Text = "Сообщения";
             // 
             // пользователяToolStripMenuItem
             // 
-            this.пользователяToolStripMenuItem.Image = global::BMPL.Properties.Resources.users;
+            this.пользователяToolStripMenuItem.Image = global::BMApp.Properties.Resources.users;
             this.пользователяToolStripMenuItem.Name = "пользователяToolStripMenuItem";
             this.пользователяToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.пользователяToolStripMenuItem.Text = "Пользователи";
@@ -162,7 +162,7 @@
             // 
             // реестрAPIToolStripMenuItem
             // 
-            this.реестрAPIToolStripMenuItem.Image = global::BMPL.Properties.Resources.api;
+            this.реестрAPIToolStripMenuItem.Image = global::BMApp.Properties.Resources.api;
             this.реестрAPIToolStripMenuItem.Name = "реестрAPIToolStripMenuItem";
             this.реестрAPIToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.реестрAPIToolStripMenuItem.Text = "Реестр API";
@@ -170,14 +170,15 @@
             // 
             // отчетыToolStripMenuItem
             // 
-            this.отчетыToolStripMenuItem.Image = global::BMPL.Properties.Resources.report;
+            this.отчетыToolStripMenuItem.Image = global::BMApp.Properties.Resources.report;
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
-            this.отчетыToolStripMenuItem.Text = "Отчеты";
+            this.отчетыToolStripMenuItem.Text = "Журналы";
+            this.отчетыToolStripMenuItem.Click += new System.EventHandler(this.отчетыToolStripMenuItem_Click);
             // 
             // интеграцияToolStripMenuItem
             // 
-            this.интеграцияToolStripMenuItem.Image = global::BMPL.Properties.Resources.integration;
+            this.интеграцияToolStripMenuItem.Image = global::BMApp.Properties.Resources.integration;
             this.интеграцияToolStripMenuItem.Name = "интеграцияToolStripMenuItem";
             this.интеграцияToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.интеграцияToolStripMenuItem.Text = "Интеграция";
@@ -195,14 +196,14 @@
             // 
             // оПрограммеToolStripMenuItem
             // 
-            this.оПрограммеToolStripMenuItem.Image = global::BMPL.Properties.Resources._operator;
+            this.оПрограммеToolStripMenuItem.Image = global::BMApp.Properties.Resources._operator;
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // руководствоПользователяToolStripMenuItem
             // 
-            this.руководствоПользователяToolStripMenuItem.Image = global::BMPL.Properties.Resources.wtpower;
+            this.руководствоПользователяToolStripMenuItem.Image = global::BMApp.Properties.Resources.wtpower;
             this.руководствоПользователяToolStripMenuItem.Name = "руководствоПользователяToolStripMenuItem";
             this.руководствоПользователяToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
             this.руководствоПользователяToolStripMenuItem.Text = "Руководство пользователя";

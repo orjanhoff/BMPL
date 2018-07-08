@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace BMApp
@@ -42,9 +43,9 @@ namespace BMApp
             b_msmq.ShowDialog();
         }
 
-        private void отчетыToolStripMenuItem_Click(object sender, EventArgs e)
+        private void логToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Process.Start("notepad.exe", BMInitGear.Bm_path_log);
         }
     }
 }

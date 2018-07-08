@@ -27,6 +27,10 @@ namespace BMApp
                 return;
             }
 
+            BMLoggingGear logger = new BMLoggingGear(typeof(Program), BMInitGear.Bm_path_log);
+
+            logger.Info("Инициализация основных компонентов приложения");
+
             try
             {
                 BMHeartBeat bmHB = new BMHeartBeat();
@@ -34,12 +38,12 @@ namespace BMApp
             }
             catch (Exception ex)
             {
+                logger.Fatal("Ошибка при инициализации: " + ex);
                 BMUiGear.Alert("{0}: Ошибка при инициализации: " + ex, "Ошибка приложения");
                 return;
             }
 
-            BMLoggingGear logger = new BMLoggingGear(typeof(Program), BMInitGear.Bm_path_log);
-            logger.Trace("Запуск основного рабочего экрана");
+            logger.Info("Запуск основного рабочего экрана");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

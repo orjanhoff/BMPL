@@ -24,6 +24,15 @@ namespace BMApp
         private BMMSMQGear()
         {}
 
+        public bool IsOn
+        { get { return isOn; } }
+
+        public bool IsReceiveOn
+        { get { return receiveOn; } }
+
+        public bool IsNotifyOn
+        { get { return notifyOn; } }
+
         public static BMMSMQGear getInstance
         {
             get { return instance ?? (instance = new BMMSMQGear()); }
@@ -51,6 +60,39 @@ namespace BMApp
             receiveOn = state;
         }
 
+        public void SwitchReceive (bool state)
+        {
+            if (state)
+            {
+                StartListener();
+            }
+            else
+            {
+                StopListener();
+            }
+        }
+
+        public void SwitchNotify (bool state)
+        {
+            turnNotify(state);
+        }
+
+        public void SwitchAll (bool state)
+        {
+            if (state)
+            {
+                turnNotify(state);
+                turnOn(state);
+
+                StartListener();
+            }
+            else
+            {
+                turnOn(state);
+                StopListener();
+            }
+        }
+
         public void Init(WaitCallback messageHandler)
         {
           //Инициализация Асинхронного листенера
@@ -62,11 +104,12 @@ namespace BMApp
           //Инициализация параметров управления
           turnOn(true);
           turnNotify(true);
-          turnReceive(true);
         }
 
         public void StartListener()
         {
+            turnReceive(true);
+
             if (isOn && receiveOn)
                 mqServer.StartListening();
             else
@@ -75,10 +118,11 @@ namespace BMApp
 
         public void StopListener()
         {
-            if (receiveOn)
+            turnReceive(false);
+
+            if (!receiveOn)
             {
                 mqServer.StopListening();
-                turnReceive(false);
             }
         }
 

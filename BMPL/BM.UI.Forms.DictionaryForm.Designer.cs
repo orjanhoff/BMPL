@@ -65,7 +65,7 @@
             this.propertiesToolStripMenuItem.Image = global::BMApp.Properties.Resources.gear;
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
             this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(32, 24);
-            this.propertiesToolStripMenuItem.ToolTipText = "Конфигурация";
+            this.propertiesToolStripMenuItem.ToolTipText = "Дополнительно";
             // 
             // dgv1
             // 

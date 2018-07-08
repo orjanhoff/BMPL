@@ -258,6 +258,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="newton.ico" />
+    <None Include="Resources\management.png" />
+    <None Include="Resources\log.png" />
     <None Include="Resources\integration.png" />
     <None Include="Resources\on1.png" />
     <None Include="Resources\off1.png" />

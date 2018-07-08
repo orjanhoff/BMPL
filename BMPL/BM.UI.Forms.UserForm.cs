@@ -7,8 +7,6 @@ namespace BMApp
 {
     public partial class UserForm : Form
     {
-        BMDaGear bm_da_gear = new BMDaGear();
-
         public UserForm(DataTable data)
         {
             InitializeComponent();
